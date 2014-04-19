@@ -1116,7 +1116,7 @@ $output .= '
 <br><div class="layers">
 <p class="heading">Click to add General Information</p> 
 <div class="content">
-Scientific Name:<input type="text" name="latin_name">
+Scientific Name:<input type="text" name="latin_name"  required>
 <br>Common Name: <input type="text" name="common_name">
 	
 	<br>Family: <input type="text" name="family">
