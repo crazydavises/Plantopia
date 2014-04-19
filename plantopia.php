@@ -805,7 +805,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
 	|| ($_FILES["file"]["type"] == "image/pjpeg")
 	|| ($_FILES["file"]["type"] == "image/x-png")
 	|| ($_FILES["file"]["type"] == "image/png"))
-	&& ($_FILES["file"]["size"] < 20000)
+	&& ($_FILES["file"]["size"] < 2097152)
 	&& in_array($extension, $allowedExts))
 {
 	if ($_FILES["file"]["error"] > 0)
@@ -1173,9 +1173,7 @@ $output .= '
 	<br>
 	Chill Hours Min: <input type="text" name="chill_hours_max"> 
 	Chill Hours Max: <input type="text" name="chill_hours_min"> </div>
-</div> 
-<br><input type="submit">
-</form>
+
 
 <p class="heading">Click to add Physical Characteristics Information</p>
 <div class="content">Mature size in feet <input type"text" name="mature_size_min">" to <input type"text" name="mature_size_max">"
@@ -1264,7 +1262,13 @@ $output .= ' Flower Color: ';
 $output .= $this->enumDropdown(flower_color, flower_color);
  
 
-$output .= '</div> <p class="heading">Click to add Harvesting Information</p>
+$output .= '</div>
+
+</div> 
+<br><input type="submit">
+</form>
+
+ <p class="heading">Click to add Harvesting Information</p>
 
 <div class="content">
 <script type="text/javascript"> 
