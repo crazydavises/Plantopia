@@ -67,6 +67,11 @@ class Plantopia
 		'Tips' => $Tips),
 		array('%s'));
 
+$this->plantDB->insert( 'images', 
+		array( 'PlantID' => $plantID,
+		'$_FILES["file"]["name"]'=>$image_name, 
+		array('%s') );
+
 
 		
 		$plantID = $this->plantDB->insert_id; 
@@ -1124,9 +1129,12 @@ Scientific Name:<input type="text" name="latin_name"  required>
 	<br>Alternate Names:   <input type="text" name="alternate_names"> <br>Language of name: <input type="text" name="alternate_name_language">  
 	<br>Variety: <input type="text" name="variety_name">
 	<br> Tips: <textarea cols="30" rows="3" input type="text" name="Tips"></textarea>';
-$output .= '<br>Add up to three images, all files must be under 20 kb in size and must have image file extensions. <label for="file">Filename:</label>
+$output .= '<br>Add up to three images, all files must be under 1 MB in size and must have image file extensions. <label for="file">Filename:</label>
 <input type="file" name="file" id="file">
-
+<br><label for="file">Filename:</label>
+<input type="file" name="file" id="file">
+<br><label for="file">Filename:</label>
+<input type="file" name="file" id="file">
 </p>
 ADD ZIP CODE LINK
 </div> 
