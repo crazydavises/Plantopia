@@ -693,7 +693,7 @@ if (isset($_POST['native_habitat'])) {
 }
 
 for ($i = 0; $i < count($nativehabitat_array); $i++)
-
+;
 
 if (isset($_POST['Deterrence_characteristics'])) {
     $deterrencecharacteristics= implode(" ", $_POST['Deterrence_characteristics']);// converts $_POST interests into a string
@@ -701,10 +701,10 @@ if (isset($_POST['Deterrence_characteristics'])) {
 }
 
 for ($i = 0; $i < count($deterrencecharacteristics_array); $i++)
-
+;
 
 for ($i = 0; $i < count($nativehabitat_array); $i++)
-
+;
 
 if (isset($_POST['extra_observation_needed'])) {
     $extraobservationneeded= implode(" ", $_POST['extra_observation_needed']);// converts $_POST interests into a string
@@ -712,7 +712,7 @@ if (isset($_POST['extra_observation_needed'])) {
 }
 
 for ($i = 0; $i < count($extraobservationneeded_array); $i++)
-
+;
 
 
 if (isset($_POST['extra_watering_needed'])) {
@@ -721,7 +721,7 @@ if (isset($_POST['extra_watering_needed'])) {
 }
 
 for ($i = 0; $i < count($extrawateringneeded_array); $i++)
-
+;
 
 
 if (isset($_POST['plant_diseases'])) {
@@ -730,7 +730,7 @@ if (isset($_POST['plant_diseases'])) {
 }
 
 for ($i = 0; $i < count($plantdiseases_array ); $i++)
-
+;
 
 
 if (isset($_POST['nutrient_fixing'])) {
@@ -739,7 +739,7 @@ if (isset($_POST['nutrient_fixing'])) {
 }
 
 for ($i = 0; $i < count($nutrientfixing_array); $i++)
-
+;
 
 if (isset($_POST['Non_food_Use'])) {
     $nonfoodusestring= implode(" ", $_POST['Non_food_Use']);// converts $_POST interests into a string
@@ -747,7 +747,7 @@ if (isset($_POST['Non_food_Use'])) {
 }
 
 for ($i = 0; $i < count($nonfooduse_array); $i++)
-
+;
 
 
 if (isset($_POST['medicine_processes'])) {
@@ -756,7 +756,7 @@ if (isset($_POST['medicine_processes'])) {
 }
 
 for ($i = 0; $i < count($medicinalprocesses_array); $i++)
-
+;
 
 
 if (isset($_POST['medicinal_uses'])) {
@@ -765,7 +765,7 @@ if (isset($_POST['medicinal_uses'])) {
 }
 
 for ($i = 0; $i < count($medicinaluses_array); $i++)
-
+;
 
 
 
@@ -778,7 +778,7 @@ if (isset($_POST['edible_for'])) {
 }
 
 for ($i = 0; $i < count($ediblefor_array); $i++)
-
+;
 
 
 
@@ -788,46 +788,49 @@ if (isset($_POST['growth_season'])) {
 }
 
 for ($i = 0; $i < count($growthseason_array); $i++)
+;
 /* you can take each chunk of these and add it to a function. */
 
 
 /*image upload script*/
 
 
-$allowedExts = array("gif", "jpeg", "jpg", "png");
+$allowedExts = array("GIF", "JPEG", "JPG", "PNG");
 $temp = explode(".", $_FILES["file"]["name"]);
-$extension = end($temp);
+$extension = strtoupper( end( $temp ) );
+
 if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")
-|| ($_FILES["file"]["type"] == "image/jpg")
-|| ($_FILES["file"]["type"] == "image/pjpeg")
-|| ($_FILES["file"]["type"] == "image/x-png")
-|| ($_FILES["file"]["type"] == "image/png"))
-&& ($_FILES["file"]["size"] < 20000)
-&& in_array($extension, $allowedExts))
-  {
-  if ($_FILES["file"]["error"] > 0)
+	|| ($_FILES["file"]["type"] == "image/jpeg")
+	|| ($_FILES["file"]["type"] == "image/jpg")
+	|| ($_FILES["file"]["type"] == "image/pjpeg")
+	|| ($_FILES["file"]["type"] == "image/x-png")
+	|| ($_FILES["file"]["type"] == "image/png"))
+	&& ($_FILES["file"]["size"] < 20000)
+	&& in_array($extension, $allowedExts))
+{
+	if ($_FILES["file"]["error"] > 0)
     {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
+		$output .= "Return Code: " . $_FILES["file"]["error"] . "<br>";
     }
-  else
+	else
     {
-      if (file_exists("images/" . $_FILES["file"]["name"]))
-      {
-      echo $_FILES["file"]["name"] . " already exists. ";
-      }
-    else
-      {
-      move_uploaded_file($_FILES["file"]["tmp_name"],
-      "images/" . $_FILES["file"]["name"]);
-  
-      }
+		if (file_exists("images/" . $_FILES["file"]["name"]))
+		{
+			$output .= $_FILES["file"]["name"] . " already exists. ";
+		}
+		else
+		{
+			$output .= "Got the file!<br>";
+			move_uploaded_file($_FILES["file"]["tmp_name"], "images/" . $_FILES["file"]["name"]);
+		}
     }
- }
+}
 else
-  {
-  echo "Invalid Image File";
-  }
+{
+	$output .= "Invalid Image File: " . $extension;
+	$output .= "Type? " . $_FILES["file"]["type"];
+	$output .= "Size? " . $_FILES["file"]["size"];
+}
 
 
 	$output .= 
@@ -1053,27 +1056,28 @@ return $output;
 			
 			
 			
+$output .= '<head>' . PHP_EOL;
 
-			/* I WANT TO USE LAYERS TO OPEN AND CLOSE PARTS of the form.  Is this possible?  */
-/* I'm sure it is, but I don't know how...  I'll look it up.  It will have to use Javascript or jQuery or jaSon, I think. */
+/* scripts */
+$output .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>' . PHP_EOL;
+$output .= '<script type="text/javascript" src="http://www.sanwebe.com/wp-content/themes/sanwebe/js/jquery-1.10.2.min.js"></script>' . PHP_EOL;
+$output .= '<script type="text/javascript" src="http://www.sanwebe.com/wp-content/themes/sanwebe/js/bodyscript.min.js"></script>' . PHP_EOL;
 
 
-$output .= '<head>
+$output .= '<script type="text/javascript">' . PHP_EOL;
+$output .= 'jQuery(document).ready(function() {' . PHP_EOL;
+$output .= '  jQuery(".content").hide();' . PHP_EOL;
+$output .= '  //toggle the component with class msg_body' . PHP_EOL;
+$output .= '  jQuery(".heading").click(function()' . PHP_EOL;
+$output .= '  {' . PHP_EOL;
+$output .= '    jQuery(this).next(".content").slideToggle(500);' . PHP_EOL;
+$output .= '  });' . PHP_EOL;
+$output .= '});' . PHP_EOL;
+$output .= '</script>' . PHP_EOL;
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
-<script type="text/javascript" src="http://www.sanwebe.com/wp-content/themes/sanwebe/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="http://www.sanwebe.com/wp-content/themes/sanwebe/js/bodyscript.min.js"></script>
-<script type="text/javascript">
-jQuery(document).ready(function() {
-  jQuery(".content").hide();
-  //toggle the componenet with class msg_body
-  jQuery(".heading").click(function()
-  {
-    jQuery(this).next(".content").slideToggle(500);
-  });
-});
-</script>
+/* style */
 
+$output .= '
 <style type="text/css"> 
 body {
 	margin: 10px auto;
@@ -1099,14 +1103,19 @@ background-color:#ffffff;
 }
 p { padding: 0px 0; }
 
-</style>
+</style>' . PHP_EOL;
 
+/* html body */
 
+$output .= '
 </head>
 
 <body>
+<form  method="post" enctype="multipart/form-data"  action="">
 
-<br><div class="layers"><p class="heading">Click to add General Information</p> <div class="content"><form  method="post" enctype="multipart/form-data"  action="">
+<br><div class="layers">
+<p class="heading">Click to add General Information</p> 
+<div class="content">
 Scientific Name:<input type="text" name="latin_name">
 <br>Common Name: <input type="text" name="common_name">
 	
@@ -1118,7 +1127,10 @@ Scientific Name:<input type="text" name="latin_name">
 $output .= '<br>Add up to three images, all files must be under 20 kb in size and must have image file extensions. <label for="file">Filename:</label>
 <input type="file" name="file" id="file">
 
-</p>ADD ZIP CODE LINK</div>';
+</p>
+ADD ZIP CODE LINK
+</div> 
+';  /* end General Information */
 
 
 	$output .= '<p class="heading">Click to add Zone Information</p>
@@ -1161,6 +1173,10 @@ $output .= '
 	<br>
 	Chill Hours Min: <input type="text" name="chill_hours_max"> 
 	Chill Hours Max: <input type="text" name="chill_hours_min"> </div>
+</div> 
+<br><input type="submit">
+</form>
+
 <p class="heading">Click to add Physical Characteristics Information</p>
 <div class="content">Mature size in feet <input type"text" name="mature_size_min">" to <input type"text" name="mature_size_max">"
 <br>
@@ -1846,7 +1862,7 @@ Flowering time for attracting beneficial predators:  <input type=text name="flow
 <input type="checkbox" name="Deterrence_characteristics[]" value="other">Other
 <br>Other: 
 <input type=text name="other_deterrence"> </div>
-
+</div> 
 <br><input type="submit">
 	</form> '. "\n";
 			
