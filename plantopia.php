@@ -69,7 +69,7 @@ class Plantopia
 
 $this->plantDB->insert( 'images', 
 		array( 'PlantID' => $plantID,
-		'$_FILES["file"]["name"]'=>$image_name, 
+		'$_FILES["file"]["name"]'=>$image_name), 
 		array('%s') );
 
 
