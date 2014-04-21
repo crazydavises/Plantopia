@@ -137,7 +137,7 @@ $this->plantDB->insert( 'fruiting_frequency',
 	
 	}
 /*******************************************************************************************/
-	function AddPhysicalCharacteristics($plantID, $Alleopathic, $Thorns, $epiphyte_attractive, $percentage_shade_underneath, $growth_speed, $branch_strength, $branch_strength, $fire_resistance, $after_harvest_regrowth_rate_inches_per_month, $mature_size_max, $blocks_alleopathy, $mature_size_min, $life_span_minimum, $life_span_maximum, $life_span_classifications, $flower_color, $root_characteristics, $plant_shape, $leaf_color, $fall_leaf_color, $leaf_drop, $toxicity, $other_problems)
+	function AddPhysicalCharacteristics($plantID, $Alleopathic, $Thorns, $epiphyte_attractive, $percentage_shade_underneath, $growth_speed, $branch_strength,  $fire_resistance, $after_harvest_regrowth_rate_inches_per_month, $mature_size_max, $blocks_alleopathy, $mature_size_min, $life_span_minimum, $life_span_maximum, $life_span_classifications, $flower_color, $root_characteristics, $plant_shape, $leaf_color, $fall_leaf_color, $leaf_drop, $toxicity, $other_problems)
 	{
 
 $this->plantDB->insert( 'leaf_characteristics', 
@@ -653,14 +653,14 @@ function enumDropdown($table_name, $column_name, $echo = false)
 		/* I have not yet found a way, in a wordpress plugin, to get around processing the */
 		/* form in the same function that you create it */
 		/* this is the portion that processes the form */
-		
-		$plantID = $this->AddGeneral( $_POST["common_name"], $_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"]);
+
+		$plantID = $this->AddGeneral( $_POST["common_name"], $_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"],$_POST["alternative_name_language"], $_POST["alternate_names"], $_POST["variety_name"], $_POST["tips"]);
 		
 		$this->AddRegionalCharacteristics( $plantID, $_POST["hardiness_zone_max"], $_POST["hardiness_zone_min"], $_POST["Sunset_zones"], $_POST["chill_hours_min"], $_POST["chill_hours_max"], $_POST["heat_zone_min"], $_POST["heat_zone_max"], $_POST["frost_free_days_needed"], $_POST["sunlight_hours_for_fruiting"], $_POST["tips"]); 
  
 		$this->AddHarvesting( $plantID,  $_POST["maximum_bearing_lbs"],  $_POST["harvest_time_days_after_last_frost_min"],  $_POST["harvest_time_days_after_last_frost_max"],  $_POST["seedless_fruits"],  $_POST["years_until_first_bearing"],  $_POST["years_until_full_bearing"],  $_POST["storageability"],  $_POST["ease_of_harvest"], $_POST["fruiting_frequency_other"], $_POST["fruiting_frequency"], $_POST["fruit_color"], $_POST["fruit_type"] );
-
-		$this->AddPhysicalCharacteristics( $plantID,  $_POST["Alleopathic"], $_POST["Thorns"], $_POST["epiphyte_attractive"], $_POST["percentage_shade_underneath"], $_POST["growth_speed"], $_POST["branch_strength"], $_POST["branch_strength"], $_POST["fire_resistance"], $_POST["after_harvest_regrowth_rate_inches_per_month"], $_POST["mature_size_max"], $_POST["blocks_alleopathy"], $_POST["mature_size_min"], $_POST["life_span_minimum"], $_POST["life_span_maximum"], $_POST["life_span_classifications"], $_POST["flower_color"], $_POST["root_characteristics"], $_POST["plant_shape, leaf_color"], $_POST["fall_leaf_color"], $_POST["leaf_drop"], $_POST["toxicity"], $_POST["other_problems"]);
+		
+		$this->AddPhysicalCharacteristics( $plantID,  $_POST["Alleopathic"], $_POST["Thorns"], $_POST["epiphyte_attractive"], $_POST["percentage_shade_underneath"], $_POST["growth_speed"], $_POST["branch_strength"], $_POST["fire_resistance"], $_POST["after_harvest_regrowth_rate_inches_per_month"], $_POST["mature_size_max"], $_POST["blocks_alleopathy"], $_POST["mature_size_min"], $_POST["life_span_minimum"], $_POST["life_span_maximum"], $_POST["life_span_classifications"], $_POST["flower_color"], $_POST["root_characteristics"], $_POST["plant_shape"], $_POST["leaf_color"], $_POST["fall_leaf_color"], $_POST["leaf_drop"], $_POST["toxicity"], $_POST["other_problems"]);
 
 
 		$this->AddConsumption( $plantID, $_POST["other_edible_for"], $_POST["edible_for"], $_POST["human_edibility"], $_POST["other_edible_uses"], $_POST["edible_uses"] );
@@ -1116,6 +1116,7 @@ $output .= '
 </head>
 
 <body>
+
 <form  method="post" enctype="multipart/form-data"  action="">
 
 <br><div class="layers">
