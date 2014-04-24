@@ -1,0 +1,488 @@
+</style>
+<p></head></p>
+
+<form action="" enctype="multipart/form-data" method="post">
+<div class="layers">
+<p class="heading">Click to add General Information</p>
+<div class="content">Scientific Name:<input name="latin_name" required="" type="text" /></p>
+<p>Common Name: <input name="common_name" type="text" /></p>
+<p>Family: <input name="family" type="text" /></p>
+<p>Resources for more information: <input name="resources_for_more_info" type="text" /></p>
+<p>Alternate Names: <input name="alternate_names" type="text" /><br />
+Language of</p>
+<p>name: <input name="alternate_name_language" type="text" /></p>
+<p>Variety: <input name="variety_name" type="text" /></p>
+<p>Tips: <textarea cols="30" name="Tips" rows="3"></textarea></p>
+<p>Add up to three images, all files must be under 1 MB in size and must have image file</p>
+<p>extensions. <label for="file">Filename:</label><br />
+<input id="file" name="file" type="file" /></p>
+<p><label for="file">Filename:</label><br />
+<input id="file" name="file" type="file" /></p>
+<p><label for="file">Filename:</label><br />
+<input id="file" name="file" type="file" /></p>
+<p>ADD ZIP CODE LINK
+</p></div>
+<p class="heading">Click to add Zone Information</p>
+<div class="content">Hardiness Zone Minimum:</p>
+<p><select name="hardiness_zone_min">
+<option value="14">Not Known</option>
+[GetNumericOptions min_number=0 max_number=13 label='Zone']
+</select></p>
+<p>Hardiness Zone Maximum:</p>
+<p><select name="hardiness_zone_max">
+<option value="14">Not Known</option>
+[GetNumericOptions min_number=0 max_number=13 label='Zone']
+</select></p>
+<p>Sunset Zones divided by commas: <input name="Sunset_zones" type="text" /><br />
+Koppen Climate</p>
+<p>Code divided by commas:<br />
+<input name="Koppen_climate_code" type="text" /><br />
+Heat Zone Minimum:<br />
+<select name="heat_zone_min">
+<option value="14">Not Known</option>
+[GetNumericOptions min_number=0 max_number=13 label='Zone']
+</select></p>
+<p>Heat Zone Maximum:</p>
+<p><select name="heat_zone_max">
+<option value="14">Not Known</option>
+[GetNumericOptions min_number=0 max_number=13 label='Zone']
+</select></p>
+<p>Chill Hours Min: <input name="chill_hours_max" type="text" /><br />
+Chill Hours Max: <input name="chill_hours_min" type="text" /></p>
+</div>
+<p class="heading">Click to add Physical Characteristics Information</p>
+<div class="content">Mature size in feet <input name="mature_size_min" type="" />&#8221; to <input name="mature_size_max" type="" />&#8221;</p>
+<p>Growth Speed:<br />
+[EnumDropDown table='physical_characteristics' column='growth_speed']
+</p>
+<p>Branch strength:</p>
+<p>&nbsp;</p>
+<p>Fire resistance:</p>
+<p>&nbsp;<br />
+Life span classifications:</p>
+<p>&nbsp;</p>
+<p>Perennial plant expected life span:<br />
+<input name="life_span_minimum" type="text" /> to <input name="life_span_maximum" type="text" /><br />
+Alleopathic:<br />
+<input checked="checked" name="Alleopathic" type="radio" value="not_known" />Not known<br />
+<input name="Alleopathic" type="radio" value="Yes" />Yes<br />
+<input name="Alleopathic" type="radio" value="No" />No<br />
+Blocks Alleopathy:<br />
+<input checked="checked" name="blocks_alleopathy" type="radio" value="not_known" />Not known</p>
+<p><input name="blocks_alleopathy" type="radio" value="Yes" />Yes<br />
+<input name="blocks_alleopathy" type="radio" value="No" />No</p>
+<p>Thorns<br />
+<input name="Thorns" type="radio" value="yes" />Yes<br />
+<input name="Thorns" type="radio" value="no" />No<br />
+<input checked="checked" name="Thorns" type="radio" value="not_known" />Not known</p>
+<p>Epiphyte Attractive:<br />
+<input name="epiphyte_attractive" type="radio" value="yes" />Yes<br />
+<input name="epiphyte_attractive" type="radio" value="no" />No<br />
+<input checked="checked" name="epiphyte_attractive" type="radio" value="not_known" />Not known<br />
+Percentage of shade underneath plant:<br />
+<input name="percentage_shade_underneath" type="text" /><br />
+After coppice/cut/mow regrowth rate in inches per month: <input name="after_harvest_regrowth_rate_inches_per_month" type="text" /><br />
+Leaf Characteristics: Leaf color:</p>
+<p>&nbsp;</p>
+<p>Fall Leaf Color:</p>
+<p>&nbsp;</p>
+<p>Leaf Drop:</p>
+<p><?php  $this--->enumDropdown(leaf_characteristics, leaf_drop);?></p>
+<p>Plant Shape:<br />
+<?php  $this--->enumDropdown(plant_shape, plant_shape);?></p>
+<p>Toxicity:<br />
+<?php  $this--->enumDropdown(problems, toxicity);?></p>
+<p>Other Problems: <textarea cols="20" name="other_problems" rows="1">	&lt;/p&gt;<br />
+&lt;p&gt;</textarea></p>
+<p>Root Characteristics:</p>
+<p>&nbsp;</p>
+<p>Flower Color:</p>
+<p>&nbsp;</p></div>
+<p class="heading">Click to add Harvesting Information</p>
+<div class="content">
+<p>Plant Part for harvest: </p>
+<p>Total sunlight hours needed for fruiting:<br />
+<input type="text" name="sunlight_hours_for_fruiting"></p>
+<p>Frost free days needed for harvest:<br />
+<input type="text" name="frost_free_days_needed"></p>
+<p>Ease of harvest:<br />
+<?php  $this->enumDropdown(harvesting, ease_of_harvest); ?></p>
+<p>Maximum bearing in lbs. <input type="text" name="maximum_bearing_lbs"></p>
+<p>Harvest time after last frost minimum: <input type="text"  name="harvest_time_days_after_last_frost_min"><br />
+Harvest time after last frost maximum: <input type="text"  name="harvest_time_days_after_last_frost_max"></p>
+<p>Seedless fruits:  <input type="radio" name="seedless_fruits" value="not_known"  checked="checked">Not known<br />
+<input type="radio" name="seedless_fruits" value="yes">Yes<br />
+<input type="radio" name="seedless_fruits" value="no">No</p>
+<p>Years until first bearing: <input type="text" Name="years_until_first_bearing"> Years </p>
+<p>until full bearing: <input type="text" name="years_until_full_bearing"></p>
+<p>Storageability:<br />
+<?php  $this->enumDropdown(harvesting, storageability);?><br />
+   Fruit Color:<br />
+<?php  $this->enumDropdown(fruit_color, fruit_color);?><br />
+   Fruit Type:<br />
+<?php  $this->enumDropdown(fruit_type, fruit_type);?></p>
+<p>Fruiting Frequency:<br />
+<?php  $this->enumDropdown(fruiting_frequency, fruiting_frequency);?></p>
+<p>Other: <input name="fruiting_frequency_other" type="text"> </p>
+</div>
+<p class="heading">Click to add Consumption information </p>
+<div class="content">Edibility: </p>
+<p>Humans:     </p>
+<p><?php  $this->enumDropdown(Human_Consumption, human_edibility);?></p>
+<p>Edible Uses:    </p>
+<p><?php  $this->enumDropdown(Human_Consumption, edible_uses);?></p>
+<p>Other Edible Uses: <input type="text" name="other_edible_uses"></p>
+<p>Livestock: <input name="edible_for" type=checkbox value="not_known"> Not Known<br />
+<input name="edible_for" type=checkbox value="chicken"> Chicken<br />
+<input  name="edible_for" type=checkbox value="sheep"> Sheep<br />
+<input name="edible_for" type=checkbox value="goats"> Goats<br />
+<input name="edible_for" type=checkbox value="quail"> Quail<br />
+<input name="edible_for" type=checkbox value="cattle"> Cattle<br />
+<input name="edible_for" type=checkbox value="ducks"> Ducks<br />
+<input name="edible_for" type=checkbox value="rabbits"> Rabbits<br />
+<input name="edible_for" type=checkbox value="pigs"> Pigs<br />
+<input name="edible_for" type=checkbox value="horses"> Horses<br />
+<input name="edible_for" type=checkbox value="other"> Other</p>
+<p>Other Livestock: <input type="text" name="other_edible_for"></div>
+<p class="heading"> Click to add Food Processing Information</p>
+<div class="content">
+ Alcohol </p>
+<p>Processes:      </p>
+<p><?php  $this->enumDropdown(alcohol_making, alcohol_processes);?></p>
+<p>Description of Process: <textarea rows="2" cols="20" input type="text" border="0"  name="description_alcohol_processes_tools"></textarea><br />
+Resources for more information: <textarea rows="2" cols="20" border="0"  input type="text"   name="alcohol_processes_resources"></textarea><br />
+Fruit processes:   </p>
+<p><?php  $this->enumDropdown(fruit_processing, fruit_processing);?></p>
+<p>Other Description: <textarea rows="1" cols="20" input type="text"  name="other_fruit_processing">	</textarea></p>
+<p>Vegetable Processes:     </p>
+<p><?php  $this->enumDropdown(vegetable_processing, vegetable_processes);?></p>
+<p>Other Description: <textarea rows="1" cols="20" input type="text"  name="other_vegetable_processes"></textarea></div>
+<p class="heading">Click to add Medicinal Information </p>
+<div class="content">Medicinal uses:<br />
+<input type="checkbox" name="medicinal_uses[]" value="not_known">Not Known</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="pain">Pain<br />
+<input type="checkbox" name="medicinal_uses[]" value="cold">Cold<br />
+<input type="checkbox" name="medicinal_uses[]" value="cough">Cough</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="anti_inflammatory">Anti-inflammatory<br />
+<input type="checkbox" name="medicinal_uses[]" value="warts">Warts<br />
+<input type="checkbox" name="medicinal_uses[]" value="laxative">Laxative</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="menstrual_cycle">Menstrual cycle<br />
+<input type="checkbox" name="medicinal_uses[]" value="immune_resilience">Immune system </p>
+<p>resilience<br />
+<input type="checkbox" name="medicinal_uses[]" value="vitamins">vitamins</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="digestion">Digestion<br />
+<input type="checkbox" name="medicinal_uses[]" value="blood_sugar_levels">Blood sugar levels<br />
+<input type="checkbox" name="medicinal_uses[]" value="burns">Burns</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="diuretic">Diuretic<br />
+<input type="checkbox" name="medicinal_uses[]" value="antifungal">Antifungal<br />
+<input type="checkbox" name="medicinal_uses[]" value="antiseptic">Antiseptic</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="antibacterial">Antibacterial<br />
+<input type="checkbox" name="medicinal_uses[]" value="heart_protection">Heart protection<br />
+<input type="checkbox" name="medicinal_uses[]" value="hormone_stabilization">Hormone </p>
+<p>stabilization</p>
+<p><input type="checkbox" name="medicinal_uses[]" value="increase_mental_capacity">Increase </p>
+<p>mental capacity<br />
+<input type="checkbox" name="medicinal_uses[]" value="parasites">Parasites<br />
+<input type="checkbox" name="medicinal_uses[]" value="other">Other</p>
+<p>Other: <input type="text" name="other_medicinal_uses"></p>
+<p>Medicinal processing:</p>
+<p><input type="checkbox" name="medicine_processes[]" value="fresh_plant_tincture"> Fresh plant </p>
+<p>tincture<br />
+<input type="checkbox" name="medicine_processes[]" value="dry_plant_tincture"> Dry plant </p>
+<p>tincture<br />
+<input type="checkbox" name="medicine_processes[]" value="tea">Tea<br />
+<input type="checkbox" name="medicine_processes[]" value="syrup">Syrup<br />
+<input type="checkbox" name="medicine_processes[]" value="salve">Salve<br />
+<input type="checkbox" name="medicine_processes[]" value="decoction"> Decoction<br />
+<input type="checkbox" name="medicine_processes[]" value="other">Other</p>
+<p>Other: <input type="text" name="medicine_processes_other"></p>
+<p>Resources: <textarea rows="1" columns="20" input type="text"  name="medicine_processes_resources"></textarea></div>
+<p class="heading">Click to add Income Streams information</p>
+<div  class="content">Profitability of Crops Resources: <textarea rows="1" cols="20" input type=text  name="market_resource_website"> </textarea></p>
+<p>Zipcode of current market: <input type=text name="zipcode_of_current_market"> </input></p>
+<p>Marketing Strategies:    </p>
+<p><?php  $this->enumDropdown(marketing_strategies, marketing_strategies);?></p>
+<p>Other Description: <textarea rows="1" cols="20" input type="text"  name="other_marketing_strategies"></textarea></p>
+<p>Country of current market: <input type=text name="country_of_current_market"></input>
+</div>
+<p class="heading">Click to add Propagation of Plants information</p>
+<div class="content">Seeds per pound: <input type="text" name="seeds_per_pound"><br />
+Seed size <input type="text" name="seed_size_in_mm"></p>
+<p>Seed color:    </p>
+<p><?php  $this->enumDropdown(seeds, seed_color);?></p>
+<p>Seed shape:    </p>
+<p><?php   $this->enumDropdown(seeds, seed_shape);?></p>
+<p>Seedling Vigor:      </p>
+<p><?php  $this->enumDropdown(seeds, seedling_vigor);?></p>
+<p>	Time to Germination in days: <input type="text" name="time_to_germination"></p>
+<p>Percentage Germination:  <input type="text" name="percentage_germination">  %   </p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;<br />
+	Transplantability:    </p>
+<p><?php  $this->enumDropdown(seeds, transplantability);?></p>
+<p>Light requirements:  <input type="text" name="light_requirements_hours_per_day"> in hours </p>
+<p>per day. </p>
+<p>	 &nbsp; &nbsp; &nbsp; &nbsp;Seeding instructions <textarea rows="1" cols="20" input  type="text" name="seeding_instructions">	</textarea></p>
+<p>Best Plant Propagation Method:    </p>
+<p><?php  $this->enumDropdown(Plant_propagations_methods, plant_propagation_method);?></p>
+<p>Tips for selected plant propagation method: <textarea rows="1" cols="20" input type="text"  name="plant_propagation_tips">	</textarea></p>
+<p>Resources for seeds/Commercial availability: <input type="text" name="seed_resources"><br />
+Country of resources <input type="text" name="country"></p>
+<p>	Grafting methods:     </p>
+<p><?php  $this->enumDropdown(grafting_methods, grafting_methods);?></p>
+<p>Other Grafting Methods: <textarea rows="1" cols="20" input type="text"  name="other_grafting_method">	</textarea>
+</div>
+<p class="heading">Click to add Plant Function Information </p>
+<div class="content">
+Plant Functions:<br />
+<input type="checkbox" name="Non_food_Use[]" checked="checked" value="not_known">Not Known</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="ink/dye">ink/dye</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="tanning">tanning</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="weaving">weaving</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="soap_making">soap making</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="oil_making">oil making</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="rope_making">rope making</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="cloth_making">cloth making</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="pot_scrubbers_abrasives">pot </p>
+<p>scrubbers/abrasives</p>
+<p><input type="checkbox" name="Non_food_Use[]"  value="sewing_needle_making">sewing_needle_making</p>
+<p><input type="checkbox" name="Non_food_Use[]" value="other">other</p>
+<p>Other: <input type="text" name="non_food_use_other"></p>
+<p> Mushroom Substrate:<br />
+<input type="radio" name="mushroom_substrate" value="not_known">Not Known</p>
+<p><input type="radio" name="mushroom_substrate" value="poor">Poor</p>
+<p><input type="radio" name="mushroom_substrate" value="medium">Medium</p>
+<p><input type="radio" name="mushroom_substrate" value="good">Good</p>
+<p>Mushroom Substrate Species: <input type="text" name="mushroom_substrate_species"></p>
+<p>Lumber Usage:     </p>
+<p><?php  $this->enumDropdown(lumber_useage, lumber_usage);?></p>
+<p>Other lumber usage: <input type="text" name="other_lumber_use"></p>
+<p>Nutrient Fixing:<br />
+<input type="checkbox" name="nutrient_fixing[]" value="not_known">Not Known<br />
+<input type="checkbox" name="nutrient_fixing[]" value="nitrogen">nitrogen<br />
+<input type="checkbox" name="nutrient_fixing[]" value="potassium">potassium</p>
+<p><input type="checkbox" name="nutrient_fixing[]" value="phosphorus">phosphorus<br />
+<input type="checkbox" name="nutrient_fixing[]" value="calcium">calcium<br />
+<input type="checkbox" name="nutrient_fixing[]" value="magnesium">magnesium</p>
+<p><input type="checkbox" name="nutrient_fixing[]" value="sulfer">sulfer<br />
+<input type="checkbox" name="nutrient_fixing[]" value="boron">boron<br />
+<input type="checkbox" name="nutrient_fixing[]" value="copper">copper</p>
+<p><input type="checkbox" name="nutrient_fixing[]" value="iron">iron<br />
+<input type="checkbox" name="nutrient_fixing[]" value="chloride">chloride<br />
+<input type="checkbox" name="nutrient_fixing[]" value="manganese">manganese</p>
+<p><input type="checkbox" name="nutrient_fixing[]" value="molybdenum">molybdenum<br />
+<input type="checkbox" name="nutrient_fixing[]" value="zinc">zinc</p>
+<p>Compost:  CN ratio of dried plant: <input type="text" name="CN_ratio_dried_plant"></p>
+<p>CN ratio of live plant: <input type="text" name="CN_ratio_fresh_plant"></p>
+<p> Biodynamic accumulator mulch plant:     </p>
+<p><?php  $this->enumDropdown(compost, biodynamic_accumulator_mulch_plant);?></p>
+<p> Sap Use:     </p>
+<p><?php  $this->enumDropdown(sap_use, sap_use);?></p>
+<p>    Other:<br />
+<input type="text" name="other_sap_use"></p>
+<p> Pollutant Cleaning:     </p>
+<p><?php  $this->enumDropdown(pollutant_cleaning, pollutant_cleaning_capabilities);?></p>
+<p>Beauty Products:     </p>
+<p><?php  $this->enumDropdown(beauty_products, beauty_products);?></p>
+<p>Other: <input type="text" name="other_beauty_products"></div>
+<p class="heading">Click to add Placement/Community information </p>
+<div class="content">
+Habitat:<br />
+Native Habitat(WWF):<br />
+ <input type="checkbox" name="native_habitat[]" value="not_known">Not Known<br />
+<input type="checkbox" name="native_habitat[]"  value="tropical_subtropical_moist_broadleaf_forest">Tropical/Subtropical moist broadleaf </p>
+<p>forest<br />
+<input type="checkbox" name="native_habitat[]"  value="tropical_subtropical_dry_broadleaf_forests">Tropical/Subtropical dry broadleaf forest<br />
+<input type="checkbox" name="native_habitat[]"  value="tropical_suptropical_coniferous_forest">Tropical/Subtropical coniferous forest<br />
+<input type="checkbox" name="native_habitat[]"  value="temperate_broadleaf_mixed_forest">Temperate mixed broadleaf forest<br />
+<input type="checkbox" name="native_habitat[]" value="temperate_coniferous_forest">Temperate </p>
+<p>Coniferous Forest<br />
+<input type="checkbox" name="native_habitat[]" value="boreal_forests_taiga">Boreal </p>
+<p>Forests/Taiga<br />
+<input type="checkbox" name="native_habitat[]"  value="tropical_subtropical_grassland">Tropical/Subtropical grasslands<br />
+<input type="checkbox" name="native_habitat[]" value="savanna_shrubland">Savanna Shrubland<br />
+<input type="checkbox" name="native_habitat[]" value="temperate_grassland">Temperate grassland<br />
+<input type="checkbox" name="native_habitat[]" value="flooded_grasslands_savannas">Flooded </p>
+<p>grassland/savanna<br />
+<input type="checkbox" name="native_habitat[]" value="montane_grassland_shrublands">Montane </p>
+<p>grasslands/shrublands<br />
+<input type="checkbox" name="native_habitat[]" value="tundra">Tundra<br />
+<input type="checkbox" name="native_habitat[]" value="mediterranean_forest">Mediterranean </p>
+<p>Forest<br />
+<input type="checkbox" name="native_habitat[]" value="woodlands_scrub">Woodlands Scrub<br />
+<input type="checkbox" name="native_habitat[]" value="deserts_xeric_shrublands">Deserts and </p>
+<p>Xeric Shrublands<br />
+<input type="checkbox" name="native_habitat[]" value="mangroves">Mangroves<br />
+<input type="checkbox" name="native_habitat[]" value="large_rivers">Large rivers<br />
+<input type="checkbox" name="native_habitat[]" value="small_rivers">Small rivers<br />
+<input type="checkbox" name="native_habitat[]" value="large_lakes">Large lakes<br />
+<input type="checkbox" name="native_habitat[]" value="small_lakes">Small lakes<br />
+<input type="checkbox" name="native_habitat[]" value="xeric_basins">Xeric basins<br />
+<input type="checkbox" name="native_habitat[]" value="polar">Polar<br />
+<input type="checkbox" name="native_habitat[]" value="temperate_shelf_seas">Temperate shelf </p>
+<p>seas<br />
+<input type="checkbox" name="native_habitat[]" value="tropical_coral">Tropical Coral<br />
+<input type="checkbox" name="native_habitat[]" value="other">Other</p>
+<p>Other native habitats: <input type="text" name="other_native_habitat"> </p>
+<p>Preferred Habitat Conditions:<br />
+Tolerates Drought:      </p>
+<p><?php  $this->enumDropdown(habitat_preferences, tolerates_drought);?></p>
+<p>Tolerates Flooding:     </p>
+<p><?php  $this->enumDropdown(habitat_preferences, tolerates_flooding);?></p>
+<p> Erosion Control Use:    </p>
+<p><?php     $this->enumDropdown(habitat_preferences, erosion_control_use);?></p>
+<p>Juglone Tolerant:      </p>
+<p><?php     $this->enumDropdown(habitat_preferences, juglone_tolerant);?></p>
+<p>Pollution Tolerance:      </p>
+<p><?php     $this->enumDropdown(habitat_preferences, pollution_tolerant);?></p>
+<p>Storm Water Retention:      </p>
+<p><?php     $this->enumDropdown(habitat_preferences, storm_water_retention);?></p>
+<p>Soil Salinity Tolerance:      </p>
+<p><?php     $this->enumDropdown(habitat_preferences, soil_salinity_tolerant);?></p>
+<p>Sun Tolerance in hours:<br />
+<input type="type" name="sun_tolerance_hrs"></p>
+<p>Shade Tolerance in hours:<br />
+<input type="type" name="shade_tolerance_hrs"></p>
+<p>Altitude Preference Range:<br />
+<input type="type" name="altitude_preference_min"> to <input type="type"  name="altitude_preference_max"></p>
+<p> Suitable for:</p>
+<p> Rooftop Garden:      </p>
+<p><?php     $this->enumDropdown(habitat_preferences, rooftop_garden);?></p>
+<p> Containers:     </p>
+<p><?php     $this->enumDropdown(habitat_preferences, container_plant);?></p>
+<p>Live Fences </p>
+<p><?php     $this->enumDropdown(habitat_preferences, live_fencing);?></p>
+<p> Terrariums: </p>
+<p><?php     $this->enumDropdown(habitat_preferences, terrarium);?></p>
+<p>Soil Content Preferences: &#8216; </p>
+<p><?php     $this->enumDropdown(soil_content_preferences, soil_content_preferences);?></p>
+<p><input type="text" name="other_content_preferences"></p>
+<p>Wind Break Hedge:  </p>
+<p><?php     $this->enumDropdown(habitat_preferences, hedge_wind_control);?></p>
+<p>Breaks up Compact Soil:  </p>
+<p><?php     $this->enumDropdown(habitat_preferences, compact_soil_breaker);?></p>
+<p>Coppicable/Poulardable:    </p>
+<p><?php     $this->enumDropdown(habitat_preferences, coppiceable_poulardable);?></p>
+<p>Plant Function Type:   </p>
+<p><?php     $this->enumDropdown(plant_functions_in_environment_descriptions, </p>
+<p>plant_functions_in_environment);?></p>
+<p>Plant Layer in Forest Garden:  </p>
+<p><?php     $this->enumDropdown(layers_plant_type, layers_plant_type);?></p>
+<p>Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 </p>
+<p>LISTS.</p>
+<p>Plant Guilds:   </p>
+<p><?php     $this->enumDropdown(plant_guilds, plant_guilds);?></p>
+<p>Other Plant Guilds:  <input type="text" name="other_plant_guilds"></p>
+<p>Landscape Application:   </p>
+<p><?php     $this->enumDropdown(landscape_application, landscape_application);?></p>
+<p>Other Landscape application: <input type="text" name="other_landscape_application"></p>
+<p> Plant is an indication of: </p>
+<p><?php     $this->enumDropdown(habitat_preferences, indication_of);?>
+</div>
+<p class="heading">Click to add Disease information </p>
+<div class="content">Plant diseases:<br />
+<input type="checkbox" name="plant_diseases[]" value="not_known">Not Known</p>
+<p><input type="checkbox" name="plant_diseases[]" value="fire_blight">Fire Blight<br />
+<input type="checkbox" name="plant_diseases[]" value="early_blight">Early Blight<br />
+<brinput type="checkbox" name="plant_diseases[]" value="late_blight">Late Blight<br />
+<input type="checkbox" name="plant_diseases[]" value="bacterial_blight">Bacterial Blight</p>
+<p><input type="checkbox" name="plant_diseases[]" value="cytosporta_cankers"> Cytosporta </p>
+<p>Cankers<br />
+<input type="checkbox" name="plant_diseases[]" value="nectria_canker">Nectria Canker<br />
+<input type="checkbox" name="plant_diseases[]" value="fruit_rot">Fruit Rot</p>
+<p><input type="checkbox" name="plant_diseases[]" value="root_stem_rots">Root and Stem Rots<br />
+<input type="checkbox" name="plant_diseases[]" value="mushroom_rots">Mushroom Rots<br />
+<input type="checkbox" name="plant_diseases[]" value="asparagus_rot">Asparagus Rust</p>
+<p><input type="checkbox" name="plant_diseases[]" value="other_rusts">Other Rusts<br />
+<input type="checkbox" name="plant_diseases[]" value="stewarts_wilt">Stewarts Wilt<br />
+<input type="checkbox" name="plant_diseases[]" value="verticulum_wilt">Verticulum Wilt<br />
+<input type="checkbox" name="plant_diseases[]" value="other">Other</p>
+<p>Other:<br />
+<input type="text" name="plant_diseases_other"></p>
+<p>Plant varieties that are resistant to diseases:<br />
+DROP DOWN LIST OF ALL VARIETIES ENTERED FOR THIS PLANT.</p>
+<p>Disease Treatments:  <textarea cols="20" rows="2" input type="text"  name="disease_treatments_description"> </textarea><br />
+Resources:<br />
+<textarea cols="20" rows="2" input type="text" name="disease_treatments_resources"><br />
+</textarea></div>
+<p class="heading">Click to add Growing and Maintenance information</p>
+<div class="content">
+<p>Vegetable Season:<br />
+<input type="radio" name="vegetable_season" value="not_known">Not known<br />
+<input type="radio" name="vegetable_season" value="cold">Cold season vegetable<br />
+<input type="radio" name="vegetable_season" value="warm"> Warm season vegetable</p>
+<p>Fruiting habit:  </p>
+<p><?php     $this->enumDropdown(fruiting_habit, fruiting_habit);?></p>
+<p>Other fruiting habit:  <input type="text" name="other_fruiting_habit"></p>
+<p>Litter type:  	</p>
+<p><?php     $this->enumDropdown(litter_type, litter_type);?></p>
+<p>Other litter type:  <input type="text" name="other_litter_type"></p>
+<p>Propagation control:  	</p>
+<p><?php     $this->enumDropdown(propagation_control_methods, propagation_control_methods);?></p>
+<p>Other propagation controls: <input type="text" name="other_propagation_control_methods"></p>
+<p>Seasonal growth and watering:<br />
+Main season of growth:<br />
+<input type="checkbox" name="growth_season[]" value="early">Early<br />
+<input type="checkbox" name="growth_season[]" value="mid">Mid<br />
+<input type="checkbox" name="growth_season[]" value="late">Late<br />
+<input type="checkbox" name="growth_season[]" value="spring">Spring<br />
+<input type="checkbox" name="growth_season[]" value="summer">Summer<br />
+<input type="checkbox" name="growth_season[]" value="fall">Fall<br />
+<input type="checkbox" name="growth_season[]" value="winter">Winter</p>
+<p>Extra watering needed:<br />
+<input type="checkbox" name="extra_watering_needed[]" value="spring">Spring<br />
+<input type="checkbox" name="extra_watering_needed[]" value="summer">Summer<br />
+<input type="checkbox" name="extra_watering_needed[]" value="fall">Fall<br />
+<input type="checkbox" name="extra_watering_needed[]" value="winter">Winter<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+Extra observation needed:<br />
+<input type="checkbox" name="extra_observation_needed[]" value="spring">Spring<br />
+<input type="checkbox" name="extra_observation_needed[]" value="summer">Summer<br />
+<input type="checkbox" name="extra_observation_needed[]" value="fall">Fall<br />
+<input type="checkbox" name="extra_observation_needed[]" value="winter">Winter</p>
+<p>First Sap Flow Average Date <input type="text" name="first_sap"><br />
+First Leafing Out Average Date <input type="text" name="first_leaf">
+</div>
+<p class="heading">Click to add Repellent and Attraction information </p>
+<div  class="content">General attraction characteristics:<br />
+Attractive to beneficial insects for laying:<br />
+<input type="radio" name="beneficial_insect_laying" value="not_known">Not Known<br />
+<input type="radio" name="beneficial_insect_laying" value="yes">Yes<br />
+<input type="radio" name="beneficial_insect_laying" value="no">No</p>
+<p>Attractive to beneficial insects for food:<br />
+<input type="radio" name="beneficial_insect_nectar_or_food" value="not_known">Not Known<br />
+<input type="radio" name="beneficial_insect_nectar_or_food" value="yes">Yes<br />
+<input type="radio" name="beneficial_insect_nectar_or_food" value="no">No</p>
+<p>Attractive to Beneficial Insects for shelter:<br />
+	<input type="radio" name="beneficial_insect_shelter" value="not_known">Not Known<br />
+<input type="radio" name="beneficial_insect_shelter" value="yes">Yes<br />
+<input type="radio" name="beneficial_insect_shelter" value="no">No</p>
+<p>Flowering time for attracting beneficial predators:  <input type=text  name="flowering_time_min"> to  <input type=text name="flowering_time_max"></p>
+<p>Pests Scientific name:   <input type=text name="pests_scientificname">  Common Name <input  type=text name="pests_commonname"></p>
+<p>Predators of pests:<br />
+<input type=text name="predators_scientificname">  Common Name <input type=text  name="predators_commonname"></p>
+<p>Characteristics of deterrence:<br />
+<input type="checkbox" name="Deterrence_characteristics[]" value="not_known">Not known<br />
+<input type="checkbox" name="Deterrence_characteristics[]" value="Pest_Resistant">Pest </p>
+<p>Resistant</p>
+<p><input type="checkbox" name="Deterrence_characteristics[]" value="Trap_Plant">Trap Plant<br />
+<input type="checkbox" name="Deterrence_characteristics" value="Pest_Confuser">Pest Confuser</p>
+<p><input type="checkbox" name="Deterrence characteristics[]" value="Deer_unpalatable">Deer </p>
+<p>unpalatable<br />
+<input type="checkbox" name="Deterrence_characteristics[]" value="Rabbit_unpalatable">Rabbit </p>
+<p>unpalatable<br />
+<input type="checkbox" name="Deterrence_characteristics[]" value="aphid_unpalatable">Aphid </p>
+<p>unpalatable</p>
+<p><input type="checkbox" name="Deterrence_characteristics[]"  value="cabbage_worm_unpalatable">Cabbage worm unpalatable<br />
+<input type="checkbox" name="Deterrence_characteristics[]"  value="leafhoppers_unpalatable">Leafhopper unpalatable</p>
+<p><input type="checkbox" name="Deterrence_characteristics[]"  value="plum_curculio_unpalatable">Plum curculio unpalatable<br />
+<input type="checkbox" name="Deterrence_characteristics[]" value="other">Other</p>
+<p>Other:<br />
+<input type=text name="other_deterrence"></div>
+</div>
+<p><input type="submit"><br />
+	</form>
+<p>			/* $output is your variable, you&#8217;re adding to it by using the &#8221;  &#8221; </p>
+<p>operator (it&#8217;s like += for strings) */</p>
+<p>			/* whatever you return will display in the source of your page */<br />
+// ]]&gt;</script></div>
+</form>
