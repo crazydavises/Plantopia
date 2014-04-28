@@ -87,11 +87,11 @@ Leaf Characteristics: Leaf color:</p>
 <p>Fall Leaf Color:</p>
 <p>&nbsp;</p>
 <p>Leaf Drop:</p>
-<p><?php  $this--->enumDropdown(leaf_characteristics, leaf_drop);?></p>
+<p><?php  [EnumDropDown table='leaf_characteristics' column='leaf_drop']</p>
 <p>Plant Shape:<br />
-<?php  $this--->enumDropdown(plant_shape, plant_shape);?></p>
+<?php  [EnumDropDown table='plant_shape' column='plant_shape']</p>
 <p>Toxicity:<br />
-<?php  $this--->enumDropdown(problems, toxicity);?></p>
+<?php  [EnumDropDown table='problems' column='toxicity']</p>
 <p>Other Problems: <textarea cols="20" name="other_problems" rows="1">	&lt;/p&gt;<br />
 &lt;p&gt;</textarea></p>
 <p>Root Characteristics:</p>
@@ -106,7 +106,7 @@ Leaf Characteristics: Leaf color:</p>
 <p>Frost free days needed for harvest:<br />
 <input type="text" name="frost_free_days_needed"></p>
 <p>Ease of harvest:<br />
-<?php  $this->enumDropdown(harvesting, ease_of_harvest); ?></p>
+<?php  [EnumDropDown table='harvesting' column='ease_of_harvest); ?></p>
 <p>Maximum bearing in lbs. <input type="text" name="maximum_bearing_lbs"></p>
 <p>Harvest time after last frost minimum: <input type="text"  name="harvest_time_days_after_last_frost_min"><br />
 Harvest time after last frost maximum: <input type="text"  name="harvest_time_days_after_last_frost_max"></p>
@@ -116,21 +116,21 @@ Harvest time after last frost maximum: <input type="text"  name="harvest_time_da
 <p>Years until first bearing: <input type="text" Name="years_until_first_bearing"> Years </p>
 <p>until full bearing: <input type="text" name="years_until_full_bearing"></p>
 <p>Storageability:<br />
-<?php  $this->enumDropdown(harvesting, storageability);?><br />
+<?php  [EnumDropDown table='harvesting' column='storageability']<br />
    Fruit Color:<br />
-<?php  $this->enumDropdown(fruit_color, fruit_color);?><br />
+<?php  [EnumDropDown table='fruit_color' column='fruit_color']<br />
    Fruit Type:<br />
-<?php  $this->enumDropdown(fruit_type, fruit_type);?></p>
+<?php  [EnumDropDown table='fruit_type' column='fruit_type']</p>
 <p>Fruiting Frequency:<br />
-<?php  $this->enumDropdown(fruiting_frequency, fruiting_frequency);?></p>
+<?php  [EnumDropDown table='fruiting_frequency' column='fruiting_frequency']</p>
 <p>Other: <input name="fruiting_frequency_other" type="text"> </p>
 </div>
 <p class="heading">Click to add Consumption information </p>
 <div class="content">Edibility: </p>
 <p>Humans:     </p>
-<p><?php  $this->enumDropdown(Human_Consumption, human_edibility);?></p>
+<p><?php  [EnumDropDown table='Human_Consumption' column='human_edibility']</p>
 <p>Edible Uses:    </p>
-<p><?php  $this->enumDropdown(Human_Consumption, edible_uses);?></p>
+<p><?php  [EnumDropDown table='Human_Consumption' column='edible_uses']</p>
 <p>Other Edible Uses: <input type="text" name="other_edible_uses"></p>
 <p>Livestock: <input name="edible_for" type=checkbox value="not_known"> Not Known<br />
 <input name="edible_for" type=checkbox value="chicken"> Chicken<br />
@@ -148,14 +148,14 @@ Harvest time after last frost maximum: <input type="text"  name="harvest_time_da
 <div class="content">
  Alcohol </p>
 <p>Processes:      </p>
-<p><?php  $this->enumDropdown(alcohol_making, alcohol_processes);?></p>
+<p><?php  [EnumDropDown table='alcohol_making' column='alcohol_processes']</p>
 <p>Description of Process: <textarea rows="2" cols="20" input type="text" border="0"  name="description_alcohol_processes_tools"></textarea><br />
 Resources for more information: <textarea rows="2" cols="20" border="0"  input type="text"   name="alcohol_processes_resources"></textarea><br />
 Fruit processes:   </p>
-<p><?php  $this->enumDropdown(fruit_processing, fruit_processing);?></p>
+<p><?php  [EnumDropDown table='fruit_processing' column='fruit_processing']</p>
 <p>Other Description: <textarea rows="1" cols="20" input type="text"  name="other_fruit_processing">	</textarea></p>
 <p>Vegetable Processes:     </p>
-<p><?php  $this->enumDropdown(vegetable_processing, vegetable_processes);?></p>
+<p><?php  [EnumDropDown table='vegetable_processing' column='vegetable_processes']</p>
 <p>Other Description: <textarea rows="1" cols="20" input type="text"  name="other_vegetable_processes"></textarea></div>
 <p class="heading">Click to add Medicinal Information </p>
 <div class="content">Medicinal uses:<br />
@@ -201,7 +201,7 @@ Fruit processes:   </p>
 <div  class="content">Profitability of Crops Resources: <textarea rows="1" cols="20" input type=text  name="market_resource_website"> </textarea></p>
 <p>Zipcode of current market: <input type=text name="zipcode_of_current_market"> </input></p>
 <p>Marketing Strategies:    </p>
-<p><?php  $this->enumDropdown(marketing_strategies, marketing_strategies);?></p>
+<p><?php  [EnumDropDown table='marketing_strategies' column='marketing_strategies']</p>
 <p>Other Description: <textarea rows="1" cols="20" input type="text"  name="other_marketing_strategies"></textarea></p>
 <p>Country of current market: <input type=text name="country_of_current_market"></input>
 </div>
@@ -209,26 +209,26 @@ Fruit processes:   </p>
 <div class="content">Seeds per pound: <input type="text" name="seeds_per_pound"><br />
 Seed size <input type="text" name="seed_size_in_mm"></p>
 <p>Seed color:    </p>
-<p><?php  $this->enumDropdown(seeds, seed_color);?></p>
+<p><?php  [EnumDropDown table='seeds' column='seed_color']</p>
 <p>Seed shape:    </p>
-<p><?php   $this->enumDropdown(seeds, seed_shape);?></p>
+<p><?php   [EnumDropDown table='seeds' column='seed_shape']</p>
 <p>Seedling Vigor:      </p>
-<p><?php  $this->enumDropdown(seeds, seedling_vigor);?></p>
+<p><?php  [EnumDropDown table='seeds' column='seedling_vigor']</p>
 <p>	Time to Germination in days: <input type="text" name="time_to_germination"></p>
 <p>Percentage Germination:  <input type="text" name="percentage_germination">  %   </p>
 <p>&nbsp; &nbsp; &nbsp; &nbsp;<br />
 	Transplantability:    </p>
-<p><?php  $this->enumDropdown(seeds, transplantability);?></p>
+<p><?php  [EnumDropDown table='seeds' column='transplantability']</p>
 <p>Light requirements:  <input type="text" name="light_requirements_hours_per_day"> in hours </p>
 <p>per day. </p>
 <p>	 &nbsp; &nbsp; &nbsp; &nbsp;Seeding instructions <textarea rows="1" cols="20" input  type="text" name="seeding_instructions">	</textarea></p>
 <p>Best Plant Propagation Method:    </p>
-<p><?php  $this->enumDropdown(Plant_propagations_methods, plant_propagation_method);?></p>
+<p><?php  [EnumDropDown table='Plant_propagations_methods' column='plant_propagation_method']</p>
 <p>Tips for selected plant propagation method: <textarea rows="1" cols="20" input type="text"  name="plant_propagation_tips">	</textarea></p>
 <p>Resources for seeds/Commercial availability: <input type="text" name="seed_resources"><br />
 Country of resources <input type="text" name="country"></p>
 <p>	Grafting methods:     </p>
-<p><?php  $this->enumDropdown(grafting_methods, grafting_methods);?></p>
+<p><?php  [EnumDropDown table='grafting_methods' column='grafting_methods']</p>
 <p>Other Grafting Methods: <textarea rows="1" cols="20" input type="text"  name="other_grafting_method">	</textarea>
 </div>
 <p class="heading">Click to add Plant Function Information </p>
@@ -254,7 +254,7 @@ Plant Functions:<br />
 <p><input type="radio" name="mushroom_substrate" value="good">Good</p>
 <p>Mushroom Substrate Species: <input type="text" name="mushroom_substrate_species"></p>
 <p>Lumber Usage:     </p>
-<p><?php  $this->enumDropdown(lumber_useage, lumber_usage);?></p>
+<p><?php  [EnumDropDown table='lumber_useage' column='lumber_usage']</p>
 <p>Other lumber usage: <input type="text" name="other_lumber_use"></p>
 <p>Nutrient Fixing:<br />
 <input type="checkbox" name="nutrient_fixing[]" value="not_known">Not Known<br />
@@ -274,15 +274,15 @@ Plant Functions:<br />
 <p>Compost:  CN ratio of dried plant: <input type="text" name="CN_ratio_dried_plant"></p>
 <p>CN ratio of live plant: <input type="text" name="CN_ratio_fresh_plant"></p>
 <p> Biodynamic accumulator mulch plant:     </p>
-<p><?php  $this->enumDropdown(compost, biodynamic_accumulator_mulch_plant);?></p>
+<p><?php  [EnumDropDown table='compost' column='biodynamic_accumulator_mulch_plant']</p>
 <p> Sap Use:     </p>
-<p><?php  $this->enumDropdown(sap_use, sap_use);?></p>
+<p><?php  [EnumDropDown table='sap_use' column='sap_use']</p>
 <p>    Other:<br />
 <input type="text" name="other_sap_use"></p>
 <p> Pollutant Cleaning:     </p>
-<p><?php  $this->enumDropdown(pollutant_cleaning, pollutant_cleaning_capabilities);?></p>
+<p><?php  [EnumDropDown table='pollutant_cleaning' column='pollutant_cleaning_capabilities']</p>
 <p>Beauty Products:     </p>
-<p><?php  $this->enumDropdown(beauty_products, beauty_products);?></p>
+<p><?php  [EnumDropDown table='beauty_products' column='beauty_products']</p>
 <p>Other: <input type="text" name="other_beauty_products"></div>
 <p class="heading">Click to add Placement/Community information </p>
 <div class="content">
@@ -325,19 +325,19 @@ Native Habitat(WWF):<br />
 <p>Other native habitats: <input type="text" name="other_native_habitat"> </p>
 <p>Preferred Habitat Conditions:<br />
 Tolerates Drought:      </p>
-<p><?php  $this->enumDropdown(habitat_preferences, tolerates_drought);?></p>
+<p><?php  [EnumDropDown table='habitat_preferences' column='tolerates_drought']</p>
 <p>Tolerates Flooding:     </p>
-<p><?php  $this->enumDropdown(habitat_preferences, tolerates_flooding);?></p>
+<p><?php  [EnumDropDown table='habitat_preferences' column='tolerates_flooding']</p>
 <p> Erosion Control Use:    </p>
-<p><?php     $this->enumDropdown(habitat_preferences, erosion_control_use);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='erosion_control_use']</p>
 <p>Juglone Tolerant:      </p>
-<p><?php     $this->enumDropdown(habitat_preferences, juglone_tolerant);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='juglone_tolerant']</p>
 <p>Pollution Tolerance:      </p>
-<p><?php     $this->enumDropdown(habitat_preferences, pollution_tolerant);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='pollution_tolerant']</p>
 <p>Storm Water Retention:      </p>
-<p><?php     $this->enumDropdown(habitat_preferences, storm_water_retention);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='storm_water_retention']</p>
 <p>Soil Salinity Tolerance:      </p>
-<p><?php     $this->enumDropdown(habitat_preferences, soil_salinity_tolerant);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='soil_salinity_tolerant']</p>
 <p>Sun Tolerance in hours:<br />
 <input type="type" name="sun_tolerance_hrs"></p>
 <p>Shade Tolerance in hours:<br />
@@ -346,37 +346,36 @@ Tolerates Drought:      </p>
 <input type="type" name="altitude_preference_min"> to <input type="type"  name="altitude_preference_max"></p>
 <p> Suitable for:</p>
 <p> Rooftop Garden:      </p>
-<p><?php     $this->enumDropdown(habitat_preferences, rooftop_garden);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='rooftop_garden']</p>
 <p> Containers:     </p>
-<p><?php     $this->enumDropdown(habitat_preferences, container_plant);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='container_plant']</p>
 <p>Live Fences </p>
-<p><?php     $this->enumDropdown(habitat_preferences, live_fencing);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='live_fencing']</p>
 <p> Terrariums: </p>
-<p><?php     $this->enumDropdown(habitat_preferences, terrarium);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='terrarium']</p>
 <p>Soil Content Preferences: &#8216; </p>
-<p><?php     $this->enumDropdown(soil_content_preferences, soil_content_preferences);?></p>
+<p><?php     [EnumDropDown table='soil_content_preferences' column='soil_content_preferences']</p>
 <p><input type="text" name="other_content_preferences"></p>
 <p>Wind Break Hedge:  </p>
-<p><?php     $this->enumDropdown(habitat_preferences, hedge_wind_control);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='hedge_wind_control']</p>
 <p>Breaks up Compact Soil:  </p>
-<p><?php     $this->enumDropdown(habitat_preferences, compact_soil_breaker);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='compact_soil_breaker']</p>
 <p>Coppicable/Poulardable:    </p>
-<p><?php     $this->enumDropdown(habitat_preferences, coppiceable_poulardable);?></p>
+<p><?php     [EnumDropDown table='habitat_preferences' column='coppiceable_poulardable']</p>
 <p>Plant Function Type:   </p>
-<p><?php     $this->enumDropdown(plant_functions_in_environment_descriptions, </p>
-<p>plant_functions_in_environment);?></p>
+<p><?php     [EnumDropDown table='plant_functions_in_environment_descriptions' column='plant_functions_in_environment']</p>
 <p>Plant Layer in Forest Garden:  </p>
-<p><?php     $this->enumDropdown(layers_plant_type, layers_plant_type);?></p>
+<p><?php     [EnumDropDown table='layers_plant_type' column='layers_plant_type']</p>
 <p>Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 </p>
 <p>LISTS.</p>
 <p>Plant Guilds:   </p>
-<p><?php     $this->enumDropdown(plant_guilds, plant_guilds);?></p>
+<p><?php     [EnumDropDown table='plant_guilds' column='plant_guilds']</p>
 <p>Other Plant Guilds:  <input type="text" name="other_plant_guilds"></p>
 <p>Landscape Application:   </p>
-<p><?php     $this->enumDropdown(landscape_application, landscape_application);?></p>
+<p><?php     [EnumDropDown table='landscape_application' column='landscape_application']</p>
 <p>Other Landscape application: <input type="text" name="other_landscape_application"></p>
 <p> Plant is an indication of: </p>
-<p><?php     $this->enumDropdown(habitat_preferences, indication_of);?>
+<p><?php     [EnumDropDown table='habitat_preferences' column='indication_of']
 </div>
 <p class="heading">Click to add Disease information </p>
 <div class="content">Plant diseases:<br />
@@ -411,13 +410,13 @@ Resources:<br />
 <input type="radio" name="vegetable_season" value="cold">Cold season vegetable<br />
 <input type="radio" name="vegetable_season" value="warm"> Warm season vegetable</p>
 <p>Fruiting habit:  </p>
-<p><?php     $this->enumDropdown(fruiting_habit, fruiting_habit);?></p>
+<p><?php     [EnumDropDown table='fruiting_habit' column='fruiting_habit']</p>
 <p>Other fruiting habit:  <input type="text" name="other_fruiting_habit"></p>
 <p>Litter type:  	</p>
-<p><?php     $this->enumDropdown(litter_type, litter_type);?></p>
+<p><?php     [EnumDropDown table='litter_type' column='litter_type']</p>
 <p>Other litter type:  <input type="text" name="other_litter_type"></p>
 <p>Propagation control:  	</p>
-<p><?php     $this->enumDropdown(propagation_control_methods, propagation_control_methods);?></p>
+<p><?php     [EnumDropDown table='propagation_control_methods' column='propagation_control_methods']</p>
 <p>Other propagation controls: <input type="text" name="other_propagation_control_methods"></p>
 <p>Seasonal growth and watering:<br />
 Main season of growth:<br />
