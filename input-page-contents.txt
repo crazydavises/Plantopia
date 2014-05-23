@@ -1,14 +1,30 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script type="text/javascript" src="//C:\xampp\apps\wordpress\htdocs\wp-content\plugins\jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+
 <script type="text/javascript">
 jQuery(document).ready(function() {
   jQuery(".content").hide();
-  //toggle the componenet with class msg_body
+  //toggle the component with class msg_body
   jQuery(".heading").click(function()
   {
     jQuery(this).next(".content").slideToggle(500);
   });
 });
 </script>
+
+
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+jQuery(".add").click(function()
+{
+jQuery(".addplantpartharvesting").append('<br>Plant Part for harvest');
+});
+});
+</script>
+
+
 
 <style type="text/css"> 
 body {
@@ -36,6 +52,16 @@ background-color:#ffffff;
 p { padding: 5px 0; }w/p>
 
 }
+
+.addplantpartharvesting{
+padding: 5px 10px;
+background-color:#ffffff;
+}
+.add {
+padding: 5px 10px;
+background-color:#E6F8E0;
+}
+
 </style>
 <body>
 <form action="" method="post">
@@ -135,9 +161,12 @@ Root Characteristics:
 Flower Color: 
  [EnumDropDown table='flower_color' column='flower_color']
 </div>
+
+
+
 <p class="heading">Click to add Harvesting Information</p>
-<div class="content">
-Plant Part for harvest: 
+<div class="content"><div class="addplantpartharvesting">
+Plant Part for harvest: [EnumDropDown table='PlantParts' column='PlantParts']
 Total sunlight hours needed for fruiting: 
 <input type="text" name="sunlight_hours_for_fruiting"> 
 Frost free days needed for harvest: 
@@ -160,7 +189,9 @@ Harvest time after last frost maximum: <input type="text"  name="harvest_time_da
  Fruiting Frequency: 
  [EnumDropDown table='fruiting_frequency' column='fruiting_frequency'] 
  Other: <input name="fruiting_frequency_other" type="text"> 
-</div>
+<p class="add">Click here to add another Plant Part</p></div></div>
+
+
 
 <p class="heading">Click to add Consumption information 
 <div class="content">Edibility: 
@@ -307,460 +338,6 @@ Plant Functions:
    Other: 
 <input type="text" name="other_sap_use"> 
  Pollutant Cleaning:  [EnumDropDown table='pollutant_cleaning' column='pollutant_cleaning_capabilities'] 
- Beauty Products:      [EnumDropDown table='beauty_products' column='beauty_products'] 
- Other: <input type="text" name="other_beauty_products"></div>
-
-
-
-<p class="heading">Click to add Placement/Community information </p>
-<div class="content">
-Habitat:  Native Habitat(WWF): 
- <input type="checkbox" name="native_habitat[]" value="not_known">Not Known 
-<input type="checkbox" name="native_habitat[]"  value="tropical_subtropical_moist_broadleaf_forest">Tropical/Subtropical moist broadleaf forest 
-<input type="checkbox" name="native_habitat[]"  value="tropical_subtropical_dry_broadleaf_forests">Tropical/Subtropical dry broadleaf forest 
-<input type="checkbox" name="native_habitat[]"  value="tropical_suptropical_coniferous_forest">Tropical/Subtropical coniferous forest 
-<input type="checkbox" name="native_habitat[]"  value="temperate_broadleaf_mixed_forest">Temperate mixed broadleaf forest 
-<input type="checkbox" name="native_habitat[]" value="temperate_coniferous_forest">Temperate Coniferous Forest 
-<input type="checkbox" name="native_habitat[]" value="boreal_forests_taiga">Boreal Forests/Taiga 
-<input type="checkbox" name="native_habitat[]"  value="tropical_subtropical_grassland">Tropical/Subtropical grasslands 
-<input type="checkbox" name="native_habitat[]" value="savanna_shrubland">Savanna Shrubland 
-<input type="checkbox" name="native_habitat[]" value="temperate_grassland">Temperate grassland 
-<input type="checkbox" name="native_habitat[]" value="flooded_grasslands_savannas">Flooded grassland/savanna 
-<input type="checkbox" name="native_habitat[]" value="montane_grassland_shrublands">Montane grasslands/shrublands 
-<input type="checkbox" name="native_habitat[]" value="tundra">Tundra 
-<input type="checkbox" name="native_habitat[]" value="mediterranean_forest">Mediterranean Forest 
-<input type="checkbox" name="native_habitat[]" value="woodlands_scrub">Woodlands Scrub 
-<input type="checkbox" name="native_habitat[]" value="deserts_xeric_shrublands">Deserts and  Xeric Shrublands 
-<input type="checkbox" name="native_habitat[]" value="mangroves">Mangroves 
-<input type="checkbox" name="native_habitat[]" value="large_rivers">Large rivers 
-<input type="checkbox" name="native_habitat[]" value="small_rivers">Small rivers 
-<input type="checkbox" name="native_habitat[]" value="large_lakes">Large lakes 
-<input type="checkbox" name="native_habitat[]" value="small_lakes">Small lakes 
-<input type="checkbox" name="native_habitat[]" value="xeric_basins">Xeric basins 
-<input type="checkbox" name="native_habitat[]" value="polar">Polar 
-<input type="checkbox" name="native_habitat[]" value="temperate_shelf_seas">Temperate shelf seas 
-<input type="checkbox" name="native_habitat[]" value="tropical_coral">Tropical Coral 
-<input type="checkbox" name="native_habitat[]" value="other">Other 
- Other native habitats: <input type="text" name="other_native_habitat"> 
-Preferred Habitat Conditions: 
-Tolerates Drought:      [EnumDropDown table='habitat_preferences' column='tolerates_drought'] 
- Tolerates Flooding:     [EnumDropDown table='habitat_preferences' column='tolerates_flooding'] 
-  Erosion Control Use:        [EnumDropDown table='habitat_preferences' column='erosion_control_use'] 
- Juglone Tolerant:      [EnumDropDown table='habitat_preferences' column='juglone_tolerant'] 
- Pollution Tolerance:   [EnumDropDown table='habitat_preferences' column='pollution_tolerant'] 
-Storm Water Retention:    [EnumDropDown table='habitat_preferences' column='storm_water_retention'] 
- Soil Salinity Tolerance:      [EnumDropDown table='habitat_preferences' column='soil_salinity_tolerant'] 
- Sun Tolerance in hours: 
-<input type="type" name="sun_tolerance_hrs"> 
-Shade Tolerance in hours: 
-<input type="type" name="shade_tolerance_hrs"> 
- Altitude Preference Range: 
-<input type="type" name="altitude_preference_min"> to <input type="type"  name="altitude_preference_max"> 
- Suitable for: 
-  Rooftop Garden:   [EnumDropDown table='habitat_preferences' column='rooftop_garden'] 
- Containers:    [EnumDropDown table='habitat_preferences' column='container_plant'] 
- Live Fences    [EnumDropDown table='habitat_preferences' column='live_fencing']
- Terrariums:   [EnumDropDown table='habitat_preferences' column='terrarium']
-Soil Content Preferences:  [EnumDropDown table='soil_content_preferences' column='soil_content_preferences']
-<input type="text" name="other_content_preferences">
-Wind Break Hedge:     [EnumDropDown table='habitat_preferences' column='hedge_wind_control']
-Breaks up Compact Soil:  [EnumDropDown table='habitat_preferences' column='compact_soil_breaker']
-Coppicable/Poulardable:     [EnumDropDown table='habitat_preferences' column='coppiceable_poulardable']
-Plant Function Type:    [EnumDropDown table='plant_functions_in_environment_descriptions' column='plant_functions_in_environment']
-Plant Layer in Forest Garden:     [EnumDropDown table='layers_plant_type' column='layers_plant_type']
-Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS.
-Plant Guilds:    [EnumDropDown table='plant_guilds' column='plant_guilds']
-Other Plant Guilds:  <input type="text" name="other_plant_guilds">
-Landscape Application:    [EnumDropDown table='landscape_application' column='landscape_application']
-Other Landscape application: <input type="text" name="other_landscape_application">
- Plant is an indication of:     [EnumDropDown table='habitat_preferences' column='indication_of']
-</div>
-
-
-<p class="heading">Click to add Disease information
-<div class="content">Plant diseases: 
-<input type="checkbox" name="plant_diseases[]" value="not_known">Not Known
-<input type="checkbox" name="plant_diseases[]" value="fire_blight">Fire Blight 
-<input type="checkbox" name="plant_diseases[]" value="early_blight">Early Blight
-<input type="checkbox" name="plant_diseases[]" value="late_blight"> Late Blight 
-<input type="checkbox" name="plant_diseases[]" value="bacterial_blight">Bacterial Blight
-<input type="checkbox" name="plant_diseases[]" value="cytosporta_cankers"> Cytosporta Cankers 
-<input type="checkbox" name="plant_diseases[]" value="nectria_canker">Nectria Canker 
-<input type="checkbox" name="plant_diseases[]" value="fruit_rot">Fruit Rot 
- <input type="checkbox" name="plant_diseases[]" value="root_stem_rots">Root and Stem Rots 
-<input type="checkbox" name="plant_diseases[]" value="mushroom_rots">Mushroom Rots 
-<input type="checkbox" name="plant_diseases[]" value="asparagus_rot">Asparagus Rust 
-<input type="checkbox" name="plant_diseases[]" value="other_rusts">Other Rusts 
-<input type="checkbox" name="plant_diseases[]" value="stewarts_wilt">Stewarts Wilt 
-<input type="checkbox" name="plant_diseases[]" value="verticulum_wilt">Verticulum Wilt 
-<input type="checkbox" name="plant_diseases[]" value="other">Other 
- Other: <input type="text" name="plant_diseases_other"> 
-Plant varieties that are resistant to diseases: 
-DROP DOWN LIST OF ALL VARIETIES ENTERED FOR THIS PLANT.
-Disease Treatments:  <textarea cols="20" rows="2" input type="text"  name="disease_treatments_description"></textarea> 
-Resources: <textarea cols="20" rows="2" input type="text" name="disease_treatments_resources"></textarea></div>
-
-
-
-<p class="heading">Click to add Growing and Maintenance information 
-<div class="content">
- Vegetable Season: 
-<input type="radio" name="vegetable_season" value="not_known">Not known 
-<input type="radio" name="vegetable_season" value="cold">Cold season vegetable 
-<input type="radio" name="vegetable_season" value="warm"> Warm season vegetable
-Fruiting habit: [EnumDropDown table='fruiting_habit' column='fruiting_habit']
-Other fruiting habit:  <input type="text" name="other_fruiting_habit">
-Litter type:    [EnumDropDown table='litter_type' column='litter_type']
-Other litter type:  <input type="text" name="other_litter_type">
-Propagation control:     [EnumDropDown table='propagation_control_methods' column='propagation_control_methods']
-Other propagation controls: <input type="text" name="other_propagation_control_methods">
-Seasonal growth and watering: 
-Main season of growth: 
-<input type="checkbox" name="growth_season[]" value="early">Early <input type="checkbox" name="growth_season[]" value="mid">Mid <input type="checkbox" name="growth_season[]" value="late">Late <input type="checkbox" name="growth_season[]" value="spring">Spring <input type="checkbox" name="growth_season[]" value="summer">Summer <input type="checkbox" name="growth_season[]" value="fall">Fall <input type="checkbox" name="growth_season[]" value="winter">Winter 
-Extra watering needed: 
-<input type="checkbox" name="extra_watering_needed[]" value="spring">Spring <input type="checkbox" name="extra_watering_needed[]" value="summer">Summer <input type="checkbox" name="extra_watering_needed[]" value="fall">Fall <input type="checkbox" name="extra_watering_needed[]" value="winter">Winter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Extra observation needed: 
-<input type="checkbox" name="extra_observation_needed[]" value="spring">Spring <input type="checkbox" name="extra_observation_needed[]" value="summer">Summer <input type="checkbox" name="extra_observation_needed[]" value="fall">Fall <input type="checkbox" name="extra_observation_needed[]" value="winter">Winter  
- First Sap Flow Average Date <input type="text" name="first_sap"> 
-First Leafing Out Average Date <input type="text" name="first_leaf">
-</div>
-
-
-<p class="heading">Click to add Repellent and Attraction information 
-<div  class="content">General attraction characteristics: 
-Attractive to beneficial insects for laying: 
-<input type="radio" name="beneficial_insect_laying" value="not_known">Not Known 
-<input type="radio" name="beneficial_insect_laying" value="yes">Yes 
-<input type="radio" name="beneficial_insect_laying" value="no">No
-Attractive to beneficial insects for food: 
-<input type="radio" name="beneficial_insect_nectar_or_food" value="not_known">Not Known 
-<input type="radio" name="beneficial_insect_nectar_or_food" value="yes">Yes 
-<input type="radio" name="beneficial_insect_nectar_or_food" value="no">No
-Attractive to Beneficial Insects for shelter: 
-	<input type="radio" name="beneficial_insect_shelter" value="not_known">Not Known 
-<input type="radio" name="beneficial_insect_shelter" value="yes">Yes 
-<input type="radio" name="beneficial_insect_shelter" value="no">No
-Flowering time for attracting beneficial predators:  <input type=text  name="flowering_time_min"> to  <input type=text name="flowering_time_max">
-Pests Scientific name:   <input type=text name="pests_scientificname"> 
- Common Name <input  type=text name="pests_commonname">
-Predators of pests Scientific name: 
-<input type=text name="predators_scientificname"> 
- Common Name <input type=text  name="predators_commonname">
-Characteristics of deterrence: 
-<input type="checkbox" name="Deterrence_characteristics[]" value="not_known">Not known 
-<input type="checkbox" name="Deterrence_characteristics[]" value="Pest_Resistant">Pest Resistant 
-<input type="checkbox" name="Deterrence_characteristics[]" value="Trap_Plant">Trap Plant 
-<input type="checkbox" name="Deterrence_characteristics" value="Pest_Confuser">Pest Confuser
-<input type="checkbox" name="Deterrence characteristics[]" value="Deer_unpalatable">Deer unpalatable 
-<input type="checkbox" name="Deterrence_characteristics[]" value="Rabbit_unpalatable">Rabbit  unpalatable 
-<input type="checkbox" name="Deterrence_characteristics[]" value="aphid_unpalatable">Aphid unpalatable 
-<input type="checkbox" name="Deterrence_characteristics[]"  value="cabbage_worm_unpalatable">Cabbage worm unpalatable 
-<input type="checkbox" name="Deterrence_characteristics[]"  value="leafhoppers_unpalatable">Leafhopper unpalatable
-<input type="checkbox" name="Deterrence_characteristics[]"  value="plum_curculio_unpalatable">Plum curculio unpalatable 
-<input type="checkbox" name="Deterrence_characteristics[]" value="other">Other
-Other: 
-<input type=text name="other_deterrence">
-
-</div>
-</div>
-<p><input type="submit"> 
-	</form>
-
-
-
-<style type="text/css"> 
-body {
-	margin: 20px auto;
-	font: 12px Verdana,Arial, Helvetica, sans-serif;
-}
-.layers {
-margin: 0;
-padding: 0;
-width: 500px;
-}
-.heading {
-margin: 1px;
-color: #000000;
-padding: 3px 10px;
-cursor: pointer;
-font-size: 14px;
-position: relative;
-background-color:#E6F8E0;
-}
-.content {
-padding: 5px 10px;
-background-color:#ffffff;
-}
-p { padding: 5px 0; }w/p>
-</style>
-<form action="" method="post">
-The Scientific Name is the only required piece of information.  But please add more than that.
-<div class="layers">
-<p class="heading">Click to add General Information</p>
-<div class="content">Scientific Name*:<input name="latin_name" required="" type="text">
- Common Name: <input name="common_name" type="text"> 
- Family: <input name="family" type="text"> 
- Resources for more information: <input name="resources_for_more_info" type="text"> 
- Alternate Names: <input name="alternate_names" type="text"> 
-Language of name: <input name="alternate_name_language" type="text">
- Variety: <input name="variety_name" type="text">
- Tips: <textarea cols="30" name="Tips" rows="3"></textarea>
-Add up to three images, all files must be under 1 MB in size and must have image file extensions. <label for="file">Filename:</label> 
-<input id="file" name="file" type="file"> 
- <label for="file">Filename:</label> 
-<input id="file" name="file" type="file" > 
- <label for="file">Filename:</label> 
-<input id="file" name="file" type="file" >
- ADD ZIP CODE LINK
-</div>
-
-
-<p class="heading">Click to add Zone Information
-<div class="content">Hardiness Zone Minimum:
-<select name="hardiness_zone_min">
-<option value="14">Not Known</option>
-[GetNumericOptions min_number=0 max_number=13 label='Zone']
-</select> Hardiness Zone Maximum:
- <select name="hardiness_zone_max">
-<option value="14">Not Known</option>
-[GetNumericOptions min_number=0 max_number=13 label='Zone']
-</select> 
- Sunset Zones divided by commas: <input name="Sunset_zones" type="text"> 
-Koppen Climate Code divided by commas: 
-<input name="Koppen_climate_code" type="text"> 
-Heat Zone Minimum: 
-<select name="heat_zone_min">
-<option value="14">Not Known</option>
-[GetNumericOptions min_number=0 max_number=13 label='Zone']
-</select>
- Heat Zone Maximum: <select name="heat_zone_max">
-<option value="14">Not Known</option>
-[GetNumericOptions min_number=0 max_number=13 label='Zone']
-</select>
- Chill Hours Min: <input name="chill_hours_max" type="text">
-Chill Hours Max: <input name="chill_hours_min" type="text">
-</div>
-
-
-<p class="heading">Click to add Physical Characteristics Information
-<div class="content">Mature size in feet <input name="mature_size_min" type="" >: to <input name="mature_size_max" type="" >.
- Growth Speed: 
-[EnumDropDown table='physical_characteristics' column='growth_speed']
- Branch strength:
-[EnumDropDown table='physical_characteristics' column='branch_strength']
- Fire resistance: 
-[EnumDropDown table='physical_characteristics' column='fire_resistance']
-Life span classifications: 
- [EnumDropDown table='life_span_classifications'   column='life_span_classifications']
- Perennial plant expected life span: 
-<input name="life_span_minimum" type="text"> to <input name="life_span_maximum" type="text"> 
-Alleopathic: 
-<input checked="checked" name="Alleopathic" type="radio" value="not_known">Not known 
-<input name="Alleopathic" type="radio" value="Yes">Yes
-<input name="Alleopathic" type="radio" value="No" >No
-Blocks Alleopathy: 
-<input checked="checked" name="blocks_alleopathy" type="radio" value="not_known">Not known
- <input name="blocks_alleopathy" type="radio" value="Yes">Yes
-<input name="blocks_alleopathy" type="radio" value="No">No
- Thorns
-<input name="Thorns" type="radio" value="yes">Yes
-<input name="Thorns" type="radio" value="no" >No
-<input checked="checked" name="Thorns" type="radio" value="not_known">Not known
- Epiphyte Attractive: 
-<input name="epiphyte_attractive" type="radio" value="yes"  >Yes 
-<input name="epiphyte_attractive" type="radio" value="no" >No 
-<input checked="checked" name="epiphyte_attractive" type="radio" value="not_known">Not known 
-Percentage of shade underneath plant: 
-<input name="percentage_shade_underneath" type="text">
-After coppice/cut/mow regrowth rate in inches per month: <input name="after_harvest_regrowth_rate_inches_per_month" type="text" > 
-Leaf Characteristics: Leaf color: 
- [EnumDropDown table='leaf_characteristics' column='leaf_color']
- Fall Leaf Color: 
- [EnumDropDown table='leaf_characteristics' column='fall_leaf_color']
- Leaf Drop: 
- [EnumDropDown table='leaf_characteristics' column='leaf_drop'] 
- Plant Shape: 
-[EnumDropDown table='plant_shape' column='plant_shape'] 
- Toxicity: 
-  [EnumDropDown table='problems' column='toxicity'] 
- Other Problems: <textarea cols="20" name="other_problems" rows="1"></textarea> 
- Root Characteristics: 
-  [EnumDropDown table='root_characteristics' column='root_characteristics']
- Flower Color: 
- [EnumDropDown table='flower_color' column='flower_color']
-</div>
-<p class="heading">Click to add Harvesting Information</p>
-<div class="content">
- Plant Part for harvest: 
- Total sunlight hours needed for fruiting: 
-<input type="text" name="sunlight_hours_for_fruiting"> 
- Frost free days needed for harvest: 
-<input type="text" name="frost_free_days_needed"> 
- Ease of harvest: 
- [EnumDropDown table='harvesting' column='ease_of_harvest']
- Maximum bearing in lbs. <input type="text" name="maximum_bearing_lbs"> 
- Harvest time after last frost minimum: <input type="text"  name="harvest_time_days_after_last_frost_min"> 
-Harvest time after last frost maximum: <input type="text"  name="harvest_time_days_after_last_frost_max"> 
- Seedless fruits:  <input type="radio" name="seedless_fruits" value="not_known"  checked="checked">Not known 
-<input type="radio" name="seedless_fruits" value="yes">Yes 
-<input type="radio" name="seedless_fruits" value="no">No 
- Years until first bearing: <input type="text" Name="years_until_first_bearing"> Years until full bearing: <input type="text" name="years_until_full_bearing"> 
- Storageability: 
-  [EnumDropDown table='harvesting' column='storageability'] 
-   Fruit Color: 
-  [EnumDropDown table='fruit_color' column='fruit_color'] 
-   Fruit Type: 
-  [EnumDropDown table='fruit_type' column='fruit_type'] 
- Fruiting Frequency: 
- [EnumDropDown table='fruiting_frequency' column='fruiting_frequency'] 
- Other: <input name="fruiting_frequency_other" type="text"> 
-</div>
-
-<p class="heading">Click to add Consumption information 
-<div class="content">Edibility: 
- Humans:     
- [EnumDropDown table='Human_Consumption' column='human_edibility'] 
- Edible Uses:    [EnumDropDown table='Human_Consumption' column='edible_uses'] 
- Other Edible Uses: <input type="text" name="other_edible_uses"> 
- Livestock: <input name="edible_for" type=checkbox value="not_known"> Not Known 
-<input name="edible_for" type=checkbox value="chicken"> Chicken 
-<input  name="edible_for" type=checkbox value="sheep"> Sheep 
-<input name="edible_for" type=checkbox value="goats"> Goats 
-<input name="edible_for" type=checkbox value="quail"> Quail 
-<input name="edible_for" type=checkbox value="cattle"> Cattle 
-<input name="edible_for" type=checkbox value="ducks"> Ducks 
-<input name="edible_for" type=checkbox value="rabbits"> Rabbits 
-<input name="edible_for" type=checkbox value="pigs"> Pigs 
-<input name="edible_for" type=checkbox value="horses"> Horses 
-<input name="edible_for" type=checkbox value="other"> Other 
- Other Livestock: <input type="text" name="other_edible_for"></div>
-
-
-
-<p class="heading"> Click to add Food Processing Information 
-<div class="content">
- Alcohol Processes:    [EnumDropDown table='alcohol_making' column='alcohol_processes'] 
- Description of Process: <textarea rows="2" cols="20" input type="text" border="0"  name="description_alcohol_processes_tools"></textarea> 
- Resources for more information: <textarea rows="2" cols="20" border="0"  input type="text"   name="alcohol_processes_resources"></textarea> 
- Fruit processes:    [EnumDropDown table='fruit_processing' column='fruit_processing']</p>
- Other Description: <textarea rows="1" cols="20" input type="text"  name="other_fruit_processing">	</textarea> 
- Vegetable Processes:   [EnumDropDown table='vegetable_processing' column='vegetable_processes'] 
- Other Description: <textarea rows="1" cols="20" input type="text"  name="other_vegetable_processes"></textarea></div>
-
-
-<p class="heading">Click to add Medicinal Information 
-<div class="content">Medicinal uses: 
-<input type="checkbox" name="medicinal_uses[]" value="not_known">Not Known 
- <input type="checkbox" name="medicinal_uses[]" value="pain">Pain 
-<input type="checkbox" name="medicinal_uses[]" value="cold">Cold 
-<input type="checkbox" name="medicinal_uses[]" value="cough">Cough 
- <input type="checkbox" name="medicinal_uses[]" value="anti_inflammatory">Anti-inflammatory 
-<input type="checkbox" name="medicinal_uses[]" value="warts">Warts 
-<input type="checkbox" name="medicinal_uses[]" value="laxative">Laxative 
- <input type="checkbox" name="medicinal_uses[]" value="menstrual_cycle">Menstrual cycle 
-<input type="checkbox" name="medicinal_uses[]" value="immune_resilience">Immune system resilience 
-<input type="checkbox" name="medicinal_uses[]" value="vitamins">vitamins 
- <input type="checkbox" name="medicinal_uses[]" value="digestion">Digestion 
-<input type="checkbox" name="medicinal_uses[]" value="blood_sugar_levels">Blood sugar levels 
-<input type="checkbox" name="medicinal_uses[]" value="burns">Burns 
- <input type="checkbox" name="medicinal_uses[]" value="diuretic">Diuretic 
-<input type="checkbox" name="medicinal_uses[]" value="antifungal">Antifungal 
-<input type="checkbox" name="medicinal_uses[]" value="antiseptic">Antiseptic 
- <input type="checkbox" name="medicinal_uses[]" value="antibacterial">Antibacterial 
-<input type="checkbox" name="medicinal_uses[]" value="heart_protection">Heart protection 
-<input type="checkbox" name="medicinal_uses[]" value="hormone_stabilization">Hormone stabilization 
- <input type="checkbox" name="medicinal_uses[]" value="increase_mental_capacity">Increase  mental capacity 
-<input type="checkbox" name="medicinal_uses[]" value="parasites">Parasites 
-<input type="checkbox" name="medicinal_uses[]" value="other">Other 
- Other: <input type="text" name="other_medicinal_uses"> 
- Medicinal processing: 
- <input type="checkbox" name="medicine_processes[]" value="fresh_plant_tincture"> Fresh plant tincture 
-<input type="checkbox" name="medicine_processes[]" value="dry_plant_tincture"> Dry plant tincture 
-<input type="checkbox" name="medicine_processes[]" value="tea">Tea 
-<input type="checkbox" name="medicine_processes[]" value="syrup">Syrup 
-<input type="checkbox" name="medicine_processes[]" value="salve">Salve 
-<input type="checkbox" name="medicine_processes[]" value="decoction"> Decoction 
-<input type="checkbox" name="medicine_processes[]" value="other">Other</p>
- Other: <input type="text" name="medicine_processes_other"> 
- Resources: <textarea rows="1" columns="20" input type="text"  name="medicine_processes_resources"></textarea></div>
-
-
-
-<p class="heading">Click to add Income Streams information 
-<div  class="content">Profitability of Crops Resources: <textarea rows="1" cols="20" input type=text  name="market_resource_website"> </textarea> 
- Zipcode of current market: <input type=text name="zipcode_of_current_market"> </input> 
- Marketing Strategies: [EnumDropDown table='marketing_strategies' column='marketing_strategies'] 
- Other Description: <textarea rows="1" cols="20" input type="text"  name="other_marketing_strategies"></textarea> 
- Country of current market: <input type=text name="country_of_current_market"></input>
-</div>
-
-
-<p class="heading">Click to add Propagation of Plants information 
-<div class="content">Seeds per pound: <input type="text" name="seeds_per_pound"> 
-Seed size <input type="text" name="seed_size_in_mm"> 
-Seed color:   
-  [EnumDropDown table='seeds' column='seed_color'] 
- Seed shape:    [EnumDropDown table='seeds' column='seed_shape'] 
- Seedling Vigor: [EnumDropDown table='seeds' column='seedling_vigor'] 
- Time to Germination in days: <input type="text" name="time_to_germination"> 
- Percentage Germination:  <input type="text" name="percentage_germination">  %   &nbsp; &nbsp; &nbsp; &nbsp; 
-	Transplantability:    [EnumDropDown table='seeds' column='transplantability'] 
- Light requirements:  <input type="text" name="light_requirements_hours_per_day"> in hours per day.    Seeding instructions <textarea rows="1" cols="20" input  type="text" name="seeding_instructions">	</textarea> 
- Best Plant Propagation Method:    [EnumDropDown table='Plant_propagations_methods' column='plant_propagation_method'] 
- Tips for selected plant propagation method: <textarea rows="1" cols="20" input type="text"  name="plant_propagation_tips">	</textarea> 
- Resources for seeds/Commercial availability: <input type="text" name="seed_resources"> 
-Country of resources <input type="text" name="country"> 
- Grafting methods:[EnumDropDown table='grafting_methods' column='grafting_methods'] 
- Other Grafting Methods: <textarea rows="1" cols="20" input type="text"  name="other_grafting_method">	</textarea>
-</div>
-
-
-
-<p class="heading">Click to add Plant Function Information </p>
-<div class="content">
-Plant Functions: 
-<input type="checkbox" name="Non_food_Use[]" checked="checked" value="not_known">Not Known 
- <input type="checkbox" name="Non_food_Use[]" value="ink/dye">Ink/dye 
-<input type="checkbox" name="Non_food_Use[]" value="tanning">tanning 
- <input type="checkbox" name="Non_food_Use[]" value="weaving">Weaving 
- <input type="checkbox" name="Non_food_Use[]" value="soap_making">Soap making 
- <input type="checkbox" name="Non_food_Use[]" value="oil_making">Oil making 
- <input type="checkbox" name="Non_food_Use[]" value="rope_making">Rope making 
- <input type="checkbox" name="Non_food_Use[]" value="cloth_making">Cloth making 
- <input type="checkbox" name="Non_food_Use[]" value="pot_scrubbers_abrasives">Pot scrubbers/abrasives 
- <input type="checkbox" name="Non_food_Use[]"  value="sewing_needle_making">Sewing_needle_making 
- <input type="checkbox" name="Non_food_Use[]" value="other">Other 
- Other: <input type="text" name="non_food_use_other"> 
-  Mushroom Substrate: 
-<input type="radio" name="mushroom_substrate" value="not_known">Not Known
- <input type="radio" name="mushroom_substrate" value="poor">Poor 
-<input type="radio" name="mushroom_substrate" value="medium">Medium 
-<input type="radio" name="mushroom_substrate" value="good">Good 
- Mushroom Substrate Species: <input type="text" name="mushroom_substrate_species"> 
- Lumber Usage:    [EnumDropDown table='lumber_useage' column='lumber_usage'] 
- Other lumber usage: <input type="text" name="other_lumber_use"> 
- Nutrient Fixing: 
-<input type="checkbox" name="nutrient_fixing[]" value="not_known">Not Known 
-<input type="checkbox" name="nutrient_fixing[]" value="nitrogen">Nitrogen 
-<input type="checkbox" name="nutrient_fixing[]" value="potassium">Potassium 
- <input type="checkbox" name="nutrient_fixing[]" value="phosphorus">Phosphorus 
-<input type="checkbox" name="nutrient_fixing[]" value="calcium">Calcium 
-<input type="checkbox" name="nutrient_fixing[]" value="magnesium">Magnesium 
- <input type="checkbox" name="nutrient_fixing[]" value="sulfer">Sulfer 
-<input type="checkbox" name="nutrient_fixing[]" value="boron">Boron 
-<input type="checkbox" name="nutrient_fixing[]" value="copper">Copper 
- <input type="checkbox" name="nutrient_fixing[]" value="iron">Iron 
-<input type="checkbox" name="nutrient_fixing[]" value="chloride">Chloride 
-<input type="checkbox" name="nutrient_fixing[]" value="manganese">Manganese 
- <input type="checkbox" name="nutrient_fixing[]" value="molybdenum">Molybdenum 
-<input type="checkbox" name="nutrient_fixing[]" value="zinc">Zinc 
- Compost:  CN ratio of dried plant: <input type="text" name="CN_ratio_dried_plant"> 
- CN ratio of live plant: <input type="text" name="CN_ratio_fresh_plant"> 
- Biodynamic accumulator mulch plant: [EnumDropDown table='compost' column='biodynamic_accumulator_mulch_plant'] 
-  Sap Use:     [EnumDropDown table='sap_use' column='sap_use'] 
-   Other: 
-<input type="text" name="other_sap_use"> 
-  Pollutant Cleaning:  [EnumDropDown table='pollutant_cleaning' column='pollutant_cleaning_capabilities'] 
  Beauty Products:      [EnumDropDown table='beauty_products' column='beauty_products'] 
  Other: <input type="text" name="other_beauty_products"></div>
 
