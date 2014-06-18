@@ -374,8 +374,8 @@ Habitat:  Native Habitat(WWF):
 <input type="checkbox" name="native_habitat[]" value="other">Other 
  Other native habitats: <input type="text" name="other_native_habitat"> 
 Preferred Habitat Conditions: 
-Tolerates Drought:      [EnumDropDown table='habitat_preferences' column='tolerates_drought'] 
- Tolerates Flooding:     [EnumDropDown table='habitat_preferences' column='tolerates_flooding'] 
+Drought Tolerant:      [EnumDropDown table='habitat_preferences' column='tolerates_drought'] 
+ Flood Tolerant:     [EnumDropDown table='habitat_preferences' column='tolerates_flooding'] 
   Erosion Control Use:        [EnumDropDown table='habitat_preferences' column='erosion_control_use'] 
  Juglone Tolerant:      [EnumDropDown table='habitat_preferences' column='juglone_tolerant'] 
  Pollution Tolerance:   [EnumDropDown table='habitat_preferences' column='pollution_tolerant'] 
