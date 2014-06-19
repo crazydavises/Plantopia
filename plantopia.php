@@ -560,7 +560,10 @@ $hedge_wind_control,
 $compact_soil_breaker, 
 $coppiceable_poulardable, 
 $native_habitat, 
-$nativehabitatkey)
+$nativehabitatkey,
+$tolerates_compaction,
+$tolerates_rocky_soil,
+$tolerates_mowing)
 
 { 
 		$this->plantDB->insert( 'plant_functions_in_environment_descriptions', 
@@ -621,8 +624,11 @@ $nativehabitatkey)
 		'hedge_wind_control' => $hedge_wind_control,
 		'compact_soil_breaker' => $compact_soil_breaker,
 		'coppiceable_poulardable' => $coppiceable_poulardable,
-		'indication_of' => $indication_of ),
-	array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s') );
+		'indication_of' => $indication_of,
+		'tolerates_compaction' => $tolerates_compaction,
+		'tolerates_rocky_soil' => $tolerates_rocky_soil,
+		'tolerates_mowing' => $tolerats_mowing),
+	array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s','%s','%s') );
 
 		$this->plantDB->insert( 'plant_native_habitat_descriptions', 
 		array( 'PlantID' => $plantID,  
@@ -920,7 +926,9 @@ function enumDropdownShortcode( $atts )
 		$_POST["altitude_preference_max"], $_POST["terrarium"],  
 		$_POST["tolerates_flooding"], $_POST["hedge_wind_control"],  
 		$_POST["compact_soil_breaker"], $_POST["coppiceable_poulardable"],  
-		$_POST["native_habitat"], $_POST["nativehabitatkey"], $_POST["indication_of"]);
+		$_POST["native_habitat"], $_POST["nativehabitatkey"], $_POST["indication_of"],
+		$_POST["tolerates_compaction"], $_POST["tolerates_rocky_soil"], 
+		$_POST["tolerates_mowing"]);
 
 		$this->AddDiseases($plantID, $_POST["plant_diseases_other"],  
 		$_POST["plant_diseaseskey"], $_POST["plant_diseaseskey"],  
@@ -1256,6 +1264,9 @@ Seeds per pound:    ". $_POST["seeds_per_pound"] .
 "<br> Landscape Application:  "   . $_POST["landscape_application"] .
 "<br> Other Landscape application:  "  . $_POST["other_landscape_application"] .
 "<br> Plant is an indication of: " . $_POST["indication_of"] .
+"<br> Plant tolerance of compaction: " . $_POST["tolerates_compaction"] .
+"<br> Plant tolerance of rocky soil: " . $_POST["tolerates_rocky_soil"] .
+"<br> Plant tolerance of mowing: " . $_POST["tolerates_mowing"] .
 
 
 "<p> <b>Added to Diseases: </b> <br>
@@ -1773,7 +1784,7 @@ $output .= $this->enumDropdown(habitat_preferences, coppiceable_poulardable). PH
 $output .= $this->enumDropdown(plant_functions_in_environment_descriptions, plant_functions_in_environment). PHP_EOL;
  $output .= ' <br>Plant Layer in Forest Garden:   '. PHP_EOL;
 $output .= $this->enumDropdown(layers_plant_type, layers_plant_type). PHP_EOL;
- $output .= ' Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS.'. PHP_EOL;
+ $output .= ' Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS. AND ADD NON-Companion plants, plants to avoid.'. PHP_EOL;
  $output .= '<BR> Plant Guilds:   ' . PHP_EOL;
 $output .= $this->enumDropdown(plant_guilds, plant_guilds). PHP_EOL;
  $output .= ' Other Plant Guilds:  <input type="text" name="other_plant_guilds">'. PHP_EOL;
