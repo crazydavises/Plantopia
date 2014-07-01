@@ -42,7 +42,7 @@ class Plantopia
 		return $output;
 	}
 /*******************************************************************************************/
-	function AddGeneral($common_name, $latin_name, $family, $resources_for_more_info, $alternate_name_language, $alternate_names, $variety_name, $tips )
+	function AddGeneral($common_name, $latin_name, $family, $resources_for_more_info, $alternate_name_language, $alternate_names, $variety_name, $tips, $image_name)
 	{
 
 		$this->plantDB->insert( 'General', 
@@ -71,7 +71,7 @@ class Plantopia
 
 $this->plantDB->insert( 'images', 
 		array( 'PlantID' => $plantID,
-		'$_FILES["file"]["name"]'=>$image_name), 
+		'Image_Name'=>$image_name), 
 		array('%s') );
 
 
@@ -425,11 +425,16 @@ $this->plantDB->insert( 'sap_use',
 
 /*******************************************************************************************/
 
-
-
-
-
-function AddHabitatandCommunity($plantID, $plant_functions_in_environment, $layers_plant_type, $other_plant_guilds, $plantguildskey, $plant_guilds, $landscape_application, $other_landscape_application, $soil_content_preferences, $other_content_preferences, $tolerates_drought, $erosion_control_use, $juglone_tolerant, $pollution_tolerant, $storm_water_retention, $soil_salinity_tolerant, $sun_tolerance_hrs, $altitude_preference_min, $rooftop_garden, $container_plant, $altitude_preference_max, $terrarium, $tolerates_flooding, $hedge_wind_control, $compact_soil_breaker, $coppiceable_poulardable, $native_habitat, $nativehabitatkey)
+function AddHabitatandCommunity($plantID, $plant_functions_in_environment, 
+	$layers_plant_type, 
+	$other_plant_guilds, $plantguildskey, $plant_guilds, 
+	$landscape_application, $other_landscape_application, 
+	$soil_content_preferences, $other_content_preferences, 
+	$tolerates_drought, $erosion_control_use, $juglone_tolerant, $pollution_tolerant, 
+		$storm_water_retention, $soil_salinity_tolerant, $sun_tolerance_hrs, $altitude_preference_min, 
+		$rooftop_garden, $container_plant, $altitude_preference_max, $terrarium, 
+		$tolerates_flooding, $hedge_wind_control, $compact_soil_breaker, $coppiceable_poulardable, $indication_of,
+	$native_habitat, $nativehabitatkey)
 
 { 
 $this->plantDB->insert( 'plant_functions_in_environment_descriptions', 
@@ -446,7 +451,7 @@ $this->plantDB->insert( 'layers_plant_type',
 $this->plantDB->insert( 'plant_guilds', 
 		array( 'PlantID' => $plantID,  
 			'other_plant_guilds' => $other_plant_guilds,
-'plantguildskey' => $plantguildskey),
+			'plantguildskey' => $plantguildskey),
 		array('%s','%d') );
 
 
@@ -478,7 +483,7 @@ $this->plantDB->insert( 'habitat_preferences',
 	'juglone_tolerant' => $juglone_tolerant,
 	'pollution_tolerant' => $pollution_tolerant,
 	'storm_water_retention' => $storm_water_retention,
-	'soil_salinity_tolerant' => $soil_salinity_tolerant,
+	'soil_salinity_tolerant' => 'good',
 	'sun_tolerance_hrs' => $sun_tolerance_hrs,
 	'shade_tolerance_hrs' => $shade_tolerance_hrs,
 	'altitude_preference_min' => $altitude_preference_min,
@@ -562,9 +567,8 @@ $this->plantDB->insert( 'seasonal_growth_and_watering',
 		array( 'PlantID' => $plantID,  
 		'growth_season' => $growth_season,
 		'extra_watering_needed' => $extra_watering_needed,
-	'extra_observation_needed' => $extra_observation_needed,
-'first_sap' => $first_sap,
-'first_leaf' => $first_leaf),
+		'extra_observation_needed' => $extra_observation_needed,
+		),
 		array('%s','%s','%s','%s','%s') );
 
 $this->plantDB->insert( 'vegetable_season', 
@@ -645,7 +649,7 @@ function enumDropdown($table_name, $column_name, $echo = false)
     
 	foreach( explode(',', $matches[1]) as $value )
     {
-         $selectDropdown .= "<option value=]" . trim( $value, "'" ) . ">$value</option>";
+         $selectDropdown .= "<option value=" . trim( $value, "'" ) . ">$value</option>";
     }   
 	
     $selectDropdown .= "</select>";
@@ -675,7 +679,7 @@ function enumDropdownShortcode( $atts )
 		/* form in the same function that you create it */
 		/* this is the portion that processes the form */
 
-		$plantID = $this->AddGeneral( $_POST["common_name"], $_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"],$_POST["alternative_name_language"], $_POST["alternate_names"], $_POST["variety_name"], $_POST["tips"]);
+		$plantID = $this->AddGeneral( $_POST["common_name"], $_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"],$_POST["alternative_name_language"], $_POST["alternate_names"], $_POST["variety_name"], $_POST["tips"], $_FILES["file"]["name"]);
 		
 		$this->AddRegionalCharacteristics( $plantID, $_POST["hardiness_zone_max"], $_POST["hardiness_zone_min"], $_POST["Sunset_zones"], $_POST["chill_hours_min"], $_POST["chill_hours_max"], $_POST["heat_zone_min"], $_POST["heat_zone_max"], $_POST["frost_free_days_needed"], $_POST["sunlight_hours_for_fruiting"], $_POST["tips"]); 
  
@@ -700,7 +704,16 @@ function enumDropdownShortcode( $atts )
 		$this->AddPlantFunctions( $plantID, $_POST["non_food_use_other"], $_POST["nonfoodusekey"], $_POST["Non_food_Use"], $_POST["nutrient_fixing"], $_POST["CN_ratio_dried_plant"], $_POST["CN_ratio_fresh_plant"], $_POST["biodynamic_accumulator_mulch_plant"], $_POST["lumber_usage"], $_POST["mushroom_substrate"], $_POST["mushroom_substrate_species"], $_POST["beauty_products"], $_POST["other_beauty_products"], $_POST["pollutant_cleaning_capabilities"], $_POST["sap_use"], $_POST["other_sap_use"]);
 
 
-		$this->AddHabitatandCommunity($plantID, $_POST["plant_functions_in_environment"], $_POST["layers_plant_type"], $_POST["other_plant_guilds"], $_POST["plantguildskey"], $_POST["plant_guilds"], $_POST["landscape_application"], $_POST["other_landscape_application"], $_POST["soil_content_preferences"], $_POST["other_content_preferences"], $_POST["tolerates_drought"], $_POST["erosion_control_use"], $_POST["juglone_tolerant"], $_POST["pollution_tolerant"], $_POST["storm_water_retention"], $_POST["soil_salinity_tolerant"], $_POST["sun_tolerance_hrs"], $_POST["altitude_preference_min"], $_POST["rooftop_garden"], $_POST["container_plant"], $_POST["altitude_preference_max"], $_POST["terrarium"], $_POST["tolerates_flooding"], $_POST["hedge_wind_control"], $_POST["compact_soil_breaker"], $_POST["coppiceable_poulardable"], $_POST["native_habitat"], $_POST["nativehabitatkey"], $_POST["indication_of"]);
+		$this->AddHabitatandCommunity($plantID, $_POST["plant_functions_in_environment"], 
+			$_POST["layers_plant_type"], 
+			$_POST["other_plant_guilds"], $_POST["plantguildskey"], $_POST["plant_guilds"], 
+			$_POST["landscape_application"], $_POST["other_landscape_application"], 
+			$_POST["soil_content_preferences"], $_POST["other_content_preferences"], 
+			$_POST["tolerates_drought"], $_POST["erosion_control_use"], $_POST["juglone_tolerant"], $_POST["pollution_tolerant"], 
+				$_POST["storm_water_retention"], $_POST["soil_salinity_tolerant"], $_POST["sun_tolerance_hrs"], $_POST["altitude_preference_min"], 
+				$_POST["rooftop_garden"], $_POST["container_plant"], $_POST["altitude_preference_max"], $_POST["terrarium"], 
+				$_POST["tolerates_flooding"], $_POST["hedge_wind_control"], $_POST["compact_soil_breaker"], $_POST["coppiceable_poulardable"], $_POST["indication_of"], 
+			$_POST["native_habitat"], $_POST["nativehabitatkey"] );
 
 		$this->AddDiseases($plantID, $_POST["plant_diseases_other"], $_POST["plant_diseaseskey"], $_POST["plant_diseaseskey"], $_POST["disease_treatments_description"], $_POST["disease_treatments_resources"]);
 
@@ -873,7 +886,7 @@ else
 
 
 
-
+$output .= 
 "<br>In Tips: " . $_POST["Tips"] . 
 
 "<p> In Zone Information the following was added to the database:  
@@ -995,34 +1008,34 @@ Seeds per pound:    ". $_POST["seeds_per_pound"] .
 
 
 "<p><b>Added to Plant Community Information </b>
-<br> Habitat: Native Habitat (WWF): "   . $nativehabitat .
-"<br> Preferred Habitat Conditions: 
-<br> Tolerates Drought:   " . $_POST["tolerates_drought"] .
-"<br> Tolerates Flooding:   " . $_POST["tolerates_flooding"] .
-"<br> Erosion Control Use:   " . $_POST["erosion_control_use"] .
-"<br> Juglone Tolerant:   " . $_POST["juglone_tolerant"] .
-"<br> Pollution Tolerance:  "  . $_POST["pollution_tolerant"] .
-"<br> Storm Water Retention:  "  . $_POST["storm_water_retention"] .
-"<br> Soil Salinity Tolerance:  "  . $_POST["soil_salinity_tolerant"] .
-"<br> Sun Tolerance in hours:   " . $_POST["sun_tolerance_hrs"] .
-"<br> Shade Tolerance in hours:   " . $_POST["shade_tolerance_hrs"] .
-"<br> Altitude Preference Range:   "  . $_POST["altitude_preference_min"] .  " to "   . $_POST["altitude_preference_max"] .
-"<br> Suitable for:
-<br> Rooftop Garden:   "  . $_POST["rooftop_garden"] .
-"<br> Containers:   " . $_POST["container_plant"] .
-"<br> Terrariums:    " . $_POST["terrarium"] .
-"<br> Soil Content Preferences:    " . $_POST["soil_content_preferences"] .
-"<br> Other Soil Content preferences: " . $_POST["other_content_preferences"] .
-"<br> Wind Break Hedge:   " . $_POST["hedge_wind_control"] .
-"<br> Breaks up Compact Soil:  "  . $_POST["compact_soil_breaker"] .
-"<br> Coppicable/Poulardable:   " . $_POST["coppiceable_poulardable"] .
-"<br> Plant Function Type:   " . $_POST["plant_functions_in_environment"] .
-"<br> Plant Layer in Forest Garden:     " . $_POST["layers_plant_type"] .
-"<br> Plant Guilds:    " . $_POST["plant_guilds"] .
-"<br> Other Plant Guilds:  "  . $_POST["other_plant_guilds"] .
-"<br> Landscape Application:  "   . $_POST["landscape_application"] .
-"<br> Other Landscape application:  "  . $_POST["other_landscape_application"] .
-"<br> Plant is an indication of: " . $_POST["indication_of"] .
+<br>Habitat: Native Habitat (WWF): "   . $nativehabitat .
+"<br>Preferred Habitat Conditions: 
+<br>Tolerates Drought:   " . $_POST["tolerates_drought"] .
+"<br>Tolerates Flooding:   " . $_POST["tolerates_flooding"] .
+"<br>Erosion Control Use:   " . $_POST["erosion_control_use"] .
+"<br>Juglone Tolerant:   " . $_POST["juglone_tolerant"] .
+"<br>Pollution Tolerance:  "  . $_POST["pollution_tolerant"] .
+"<br>Storm Water Retention:  "  . $_POST["storm_water_retention"] .
+"<br>Soil Salinity Tolerance:  "  . $_POST["soil_salinity_tolerant"] .
+"<br>Sun Tolerance in hours:   " . $_POST["sun_tolerance_hrs"] .
+"<br>Shade Tolerance in hours:   " . $_POST["shade_tolerance_hrs"] .
+"<br>Altitude Preference Range:   "  . $_POST["altitude_preference_min"] .  " to "   . $_POST["altitude_preference_max"] .
+"<br>Suitable for:
+ <br>Rooftop Garden:   "  . $_POST["rooftop_garden"] .
+"<br>Containers:   " . $_POST["container_plant"] .
+"<br>Terrariums:    " . $_POST["terrarium"] .
+"<br>Soil Content Preferences:    " . $_POST["soil_content_preferences"] .
+"<br>Other Soil Content preferences: " . $_POST["other_content_preferences"] .
+"<br>Wind Break Hedge:   " . $_POST["hedge_wind_control"] .
+"<br>Breaks up Compact Soil:  "  . $_POST["compact_soil_breaker"] .
+"<br>Coppicable/Poulardable:   " . $_POST["coppiceable_poulardable"] .
+"<br>Plant Function Type:   " . $_POST["plant_functions_in_environment"] .
+"<br>Plant Layer in Forest Garden:     " . $_POST["layers_plant_type"] .
+"<br>Plant Guilds:    " . $_POST["plant_guilds"] .
+"<br>Other Plant Guilds:  "  . $_POST["other_plant_guilds"] .
+"<br>Landscape Application:  "   . $_POST["landscape_application"] .
+"<br>Other Landscape application:  "  . $_POST["other_landscape_application"] .
+"<br>Plant is an indication of: " . $_POST["indication_of"] .
 
 
 "<p> <b>Added to Diseases: </b> <br>
@@ -1456,11 +1469,11 @@ $output .= ' <br>Other lumber usage: <input type="text" name="other_lumber_use">
 $output .= $this->enumDropdown(compost, biodynamic_accumulator_mulch_plant) . PHP_EOL;
  $output .= '<br> Sap Use: ' . PHP_EOL;
 $output .= $this->enumDropdown(sap_use, sap_use) . PHP_EOL;
- $output .= '  Other: ' . PHP_EOL;
+ $output .= ' Other: ' . PHP_EOL;
  $output .= '<input type="text" name="other_sap_use">' . PHP_EOL;
  $output .= '<br> Pollutant Cleaning:  ' . PHP_EOL;
 $output .= $this->enumDropdown(pollutant_cleaning, pollutant_cleaning_capabilities) . PHP_EOL;
- $output .= ' Beauty Products:  ' . PHP_EOL;
+ $output .= 'Beauty Products:  ' . PHP_EOL;
 $output .= $this->enumDropdown(beauty_products, beauty_products) . PHP_EOL;
  $output .= 'Other: <input type="text" name="other_beauty_products">' . PHP_EOL;
  $output .= '</div>' . PHP_EOL;
@@ -1498,56 +1511,56 @@ $output .= $this->enumDropdown(beauty_products, beauty_products) . PHP_EOL;
  $output .= '<input type="checkbox" name="native_habitat[]" value="other">Other ' . PHP_EOL;
  $output .= '<br> Other native habitats: <input type="text" name="other_native_habitat"> <br>' . PHP_EOL;
  $output .= 'Preferred Habitat Conditions:' . PHP_EOL;
- $output .= 'Tolerates Drought:   ' . PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, tolerates_drought). PHP_EOL;
- $output .= 'Tolerates Flooding:  '. PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, tolerates_flooding). PHP_EOL;
- $output .= ' <br> Erosion Control Use: '. PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, erosion_control_use). PHP_EOL;
- $output .= ' Juglone Tolerant:   '. PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, juglone_tolerant). PHP_EOL;
-$output .= ' <br>Pollution Tolerance:   '. PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, pollution_tolerant). PHP_EOL;
+ $output .= '<br>Tolerates Drought:   ' . PHP_EOL;
+ $output .= $this->enumDropdown(habitat_preferences, tolerates_drought). PHP_EOL;
+ $output .= '<br>Tolerates Flooding:  '. PHP_EOL;
+ $output .= $this->enumDropdown(habitat_preferences, tolerates_flooding). PHP_EOL;
+ $output .= '<br>Erosion Control Use: '. PHP_EOL;
+ $output .= $this->enumDropdown(habitat_preferences, erosion_control_use). PHP_EOL;
+ $output .= '<br>Juglone Tolerant:   '. PHP_EOL;
+ $output .= $this->enumDropdown(habitat_preferences, juglone_tolerant). PHP_EOL;
+ $output .= '<br>Pollution Tolerance:   '. PHP_EOL;
+ $output .= $this->enumDropdown(habitat_preferences, pollution_tolerant). PHP_EOL;
  $output .= 'Storm Water Retention:   '. PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, storm_water_retention). PHP_EOL;
- $output .= '   <br>Soil Salinity Tolerance:   '. PHP_EOL;
-$output .= $this->enumDropdown(habitat_preferences, soil_salinity_tolerant). PHP_EOL;
- $output .= '   <br>Sun Tolerance in hours:'. PHP_EOL; 
+ $output .= $this->enumDropdown(habitat_preferences, storm_water_retention). PHP_EOL;
+ $output .= '<br>Soil Salinity Tolerance:   '. PHP_EOL;
+ $output .= $this->enumDropdown(habitat_preferences, soil_salinity_tolerant). PHP_EOL;
+ $output .= '<br>Sun Tolerance in hours:'. PHP_EOL; 
  $output .= '<input type="type" name="sun_tolerance_hrs">'. PHP_EOL; 
- $output .= 'Shade Tolerance in hours: '. PHP_EOL; 
+ $output .= '<br>Shade Tolerance in hours: '. PHP_EOL; 
  $output .= '<input type="type" name="shade_tolerance_hrs">'. PHP_EOL; 
  $output .= '<br>Altitude Preference Range: '. PHP_EOL; 
  $output .= '<input type="type" name="altitude_preference_min"> to <input type="type" name="altitude_preference_max">'. PHP_EOL; 
- $output .= '<br> Suitable for:'. PHP_EOL; 
- $output .= '<br> Rooftop Garden:   '. PHP_EOL; 
+ $output .= '<br>Suitable for:'. PHP_EOL; 
+ $output .= '<br>  Rooftop Garden:   '. PHP_EOL; 
 $output .= $this->enumDropdown(habitat_preferences, rooftop_garden). PHP_EOL;
- $output .= '    Containers:  '. PHP_EOL;
+ $output .= '<br>    Containers:  '. PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, container_plant). PHP_EOL;
- $output .= '   Live Fences '. PHP_EOL;
+ $output .= '<br>   Live Fences '. PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, live_fencing). PHP_EOL;
- $output .= '    Terrariums: ' . PHP_EOL;
+ $output .= '<br>    Terrariums: ' . PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, terrarium). PHP_EOL;
- $output .= '   <br>Soil Content Preferences: ' . PHP_EOL;
+ $output .= '<br>Soil Content Preferences: ' . PHP_EOL;
 $output .= $this->enumDropdown(soil_content_preferences, soil_content_preferences). PHP_EOL;
  $output .= ' <input type="text" name="other_content_preferences">' . PHP_EOL;
  $output .= '<br>Wind Break Hedge:  ' . PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, hedge_wind_control). PHP_EOL;
- $output .= '   Breaks up Compact Soil:   '. PHP_EOL;
+ $output .= '<br>Breaks up Compact Soil:   '. PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, compact_soil_breaker). PHP_EOL;
- $output .= ' Coppicable/Poulardable:    ' . PHP_EOL;
+ $output .= '<br>Coppicable/Poulardable:    ' . PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, coppiceable_poulardable). PHP_EOL;
- $output .= ' Plant Function Type:   ' . PHP_EOL;
+ $output .= '<br>Plant Function Type:   ' . PHP_EOL;
 $output .= $this->enumDropdown(plant_functions_in_environment_descriptions, plant_functions_in_environment). PHP_EOL;
- $output .= ' <br>Plant Layer in Forest Garden:   '. PHP_EOL;
+ $output .= '<br><br>Plant Layer in Forest Garden:   '. PHP_EOL;
 $output .= $this->enumDropdown(layers_plant_type, layers_plant_type). PHP_EOL;
- $output .= ' Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS.'. PHP_EOL;
+ $output .= '<br>Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS.'. PHP_EOL;
  $output .= '<BR> Plant Guilds:   ' . PHP_EOL;
 $output .= $this->enumDropdown(plant_guilds, plant_guilds). PHP_EOL;
- $output .= ' Other Plant Guilds:  <input type="text" name="other_plant_guilds">'. PHP_EOL;
+ $output .= '<br>Other Plant Guilds:  <input type="text" name="other_plant_guilds">'. PHP_EOL;
  $output .= '<br>Landscape Application:   ' . PHP_EOL;
 $output .= $this->enumDropdown(landscape_application, landscape_application) . PHP_EOL;
- $output .= ' Other Landscape application: <input type="text" name="other_landscape_application">'. PHP_EOL;
- $output .= '<br> Plant is an indication of: '. PHP_EOL;
+ $output .= '<br>Other Landscape application: <input type="text" name="other_landscape_application">'. PHP_EOL;
+ $output .= '<br>Plant is an indication of: '. PHP_EOL;
 $output .= $this->enumDropdown(habitat_preferences, indication_of). PHP_EOL;
  $output .= '</div> '. PHP_EOL;
    /* end community Information */
