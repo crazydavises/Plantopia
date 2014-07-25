@@ -43,66 +43,63 @@ class Plantopia
 	}
 /*******************************************************************************************/
 
-	function AddGeneral($common_name, $latin_name, $family, 
+function AddGeneral($common_name, $latin_name, $family, 
 						$resources_for_more_info, 
 						$alternate_name_language, 
 						$alternate_names, 
 						$variety_name, 
 						$tips )
-	{
+{
 
-		$this->plantDB->insert( 'General', 
+	$this->plantDB->insert( 'General', 
 		array( 'common_name' => $common_name, 
 		'latin_name'=>$latin_name, 
 		'family' => $family, 
 		'resources_for_more_info' => $resources_for_more_info),
-	array('%s', '%s', '%s', '%s') ); 
+		array('%s', '%s', '%s', '%s') ); 
 
-		$this->plantDB->insert( 'alternate_names', 
+	$this->plantDB->insert( 'alternate_names', 
 		array( 'PlantID' => $plantID,  
 		'alternate_name_language' => $alternate_name_language, 
 		'alternate_names'=>$alternate_names),
-	array('%s', '%s') );
+		array('%s', '%s') );
 
-		$this->plantDB->insert( 'varieties', 
+	$this->plantDB->insert( 'varieties', 
 		array( 'PlantID' => $plantID,  
 		'variety_name' => $variety_name),
-	array('%s') );
+		array('%s') );
 
 
-		$this->plantDB->insert( 'tips', 
+	$this->plantDB->insert( 'tips', 
 		array( 'PlantID' => $plantID,  
 		'Tips' => $Tips),
-	array('%s'));
+		array('%s'));
 
-		$this->plantDB->insert( 'images', 
+	$this->plantDB->insert( 'images', 
 		array( 'PlantID' => $plantID,
 		'$_FILES["file"]["name"]'=>$image_name), 
-	array('%s') );
+		array('%s') );
 
-
-
+	$plantID = $this->plantDB->insert_id; 
 		
-		$plantID = $this->plantDB->insert_id; 
-		
-		return $plantID;
+	return $plantID;
 
-	}
+}
 /*******************************************************************************************/
-	function AddRegionalCharacteristics( $plantID, 
-$hardy_min, 
-$hardy_max, 
-$sunset_zone, 
-$chill_min, 
-$chill_max, 
-$heat_min, 
-$heat_max, 
-$frost_free_days, 
-$sunlight_hours, 
-$Koppen_climate_code)
-	{
+function AddRegionalCharacteristics( $plantID, 
+	$hardy_min, 
+	$hardy_max, 
+	$sunset_zone, 
+	$chill_min, 
+	$chill_max, 
+	$heat_min, 
+	$heat_max, 
+	$frost_free_days, 
+	$sunlight_hours, 
+	$Koppen_climate_code)
+{
 
-		$this->plantDB->insert( 'regional_characteristics', 
+	$this->plantDB->insert( 'regional_characteristics', 
 		array( 'PlantID' => $plantID,  
 		'hardiness_zone_min'=>$hardy_min, 
 		'hardiness_zone_max' => $hardy_max,
@@ -113,30 +110,30 @@ $Koppen_climate_code)
 		'heat_zone_max' => $heat_max,
 		'frost_free_days_needed' => $frost_free_days,
 		'sunlight_hours_for_fruiting' => $sunlight_hours ),
-	array('%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d') );
+		array('%d', '%d', '%s', '%d', '%d', '%d', '%d', '%d', '%d') );
 	
 		$this->plantDB->insert( 'koppen_climate_code', 
 		array( 'PlantID' => $plantID,  
 		'Koppen_climate_code' => $Koppen_climate_code),
-	array('%s') );
+		array('%s') );
 
-	}
+}
 /*******************************************************************************************/
 function AddHarvesting( $maximum_bearing_lbs, 
-$harvest_time_days_after_last_frost_min, 
-$harvest_time_days_after_last_frost_max, 
-$seedless_fruits, 
-$years_until_first_bearing, 
-$years_until_full_bearing, 
-$storageability, 
-$ease_of_harvest, 
-$fruiting_frequency_other, 
-$fruiting_frequency, 
-$fruit_color, 
-$fruit_type )
-	{
+	$harvest_time_days_after_last_frost_min, 
+	$harvest_time_days_after_last_frost_max, 
+	$seedless_fruits, 
+	$years_until_first_bearing, 
+	$years_until_full_bearing, 
+	$storageability, 
+	$ease_of_harvest, 
+	$fruiting_frequency_other, 
+	$fruiting_frequency, 
+	$fruit_color, 
+	$fruit_type )
+{
 
-		$this->plantDB->insert( 'harvesting', 
+	$this->plantDB->insert( 'harvesting', 
 		array( 'PlantID' => $plantID,  
 		'maximum_bearing_lbs' => $maximum_bearing_lbs, 
 		'harvest_time_days_after_last_frost_min' => $harvest_time_days_after_last_frost_min, 
@@ -146,7 +143,7 @@ $fruit_type )
 		'years_until_full_bearing' => $years_until_full_bearing, 
 		'storageability' => $storageability, 
 		'ease_of_harvest' => $ease_of_harvest), 
-	array('%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d') );
+		array('%d', '%d', '%d', '%d', '%d', '%d', '%d', '%d') );
 
 		$this->plantDB->insert( 'fruit_color', 
 		array( 'PlantID' => $plantID,  
@@ -163,58 +160,56 @@ $fruit_type )
 		'fruiting_frequency' => $fruiting_frequency,
 		'fruiting_frequency_other' => $fruiting_frequency_other),
 	array('%s','%s') );
-
-	
-	}
+}
 /*******************************************************************************************/
-	function AddPhysicalCharacteristics($plantID, 
-$Alleopathic, 
-$Thorns, 
-$epiphyte_attractive, 
-$percentage_shade_underneath, 
-$growth_speed, 
-$branch_strength,  
-$fire_resistance, 
-$after_harvest_regrowth_rate_inches_per_month, 
-$mature_size_max, 
-$blocks_alleopathy, 
-$mature_size_min, 
-$life_span_minimum, 
-$life_span_maximum, 
-$life_span_classifications, 
-$flower_color, 
-$root_characteristics, 
-$plant_shape, 
-$leaf_color, 
-$fall_leaf_color, 
-$leaf_drop, 
-$toxicity, 
-$other_problems)
-	{
+function AddPhysicalCharacteristics($plantID, 
+	$Alleopathic, 
+	$Thorns, 
+	$epiphyte_attractive, 
+	$percentage_shade_underneath, 
+	$growth_speed, 
+	$branch_strength,  
+	$fire_resistance, 
+	$after_harvest_regrowth_rate_inches_per_month, 
+	$mature_size_max, 
+	$blocks_alleopathy, 
+	$mature_size_min, 
+	$life_span_minimum, 
+	$life_span_maximum, 
+	$life_span_classifications, 
+	$flower_color, 
+	$root_characteristics, 
+	$plant_shape, 
+	$leaf_color, 
+	$fall_leaf_color, 
+	$leaf_drop, 
+	$toxicity, 
+	$other_problems)
+{
 
-		$this->plantDB->insert( 'leaf_characteristics', 
+	$this->plantDB->insert( 'leaf_characteristics', 
 		array( 'PlantID' => $plantID,  
 		'leaf_drop' => $leaf_drop,
 		'fall_leaf_color' => $fall_leaf_color,
 		'leaf_color' => $leaf_color), 
-	array('%s', '%s', '%s') );
+		array('%s', '%s', '%s') );
 
-		$this->plantDB->insert( 'plant_shape', 
+	$this->plantDB->insert( 'plant_shape', 
 		array( 'PlantID' => $plantID,  
 		'plant_shape' => $plant_shape), 
-	array('%s') ); 
+		array('%s') ); 
 
-		$this->plantDB->insert( 'root_characteristics', 
+	$this->plantDB->insert( 'root_characteristics', 
 		array( 'PlantID' => $plantID,  
 		'root_characteristics' => $root_characteristics),
-	array('%s') );
+		array('%s') );
 
-		$this->plantDB->insert( 'flower_color', 
+	$this->plantDB->insert( 'flower_color', 
 		array( 'PlantID' => $plantID,  
 		'flower_color' => $flower_color),
-	array('%s') );
+		array('%s') );
 
-		$this->plantDB->insert( 'physical_characteristics', 
+	$this->plantDB->insert( 'physical_characteristics', 
 		array( 'PlantID' => $plantID,  
 		'Alleopathic' => $Alleopathic, 
 		'Thorns' => $_POST["Thorns"], 
@@ -227,59 +222,55 @@ $other_problems)
 		'mature_size_max' => $mature_size_max, 
 		'blocks_alleopathy' => $blocks_alleopathy, 
 		'mature_size_min' => $mature_size_min), 
-	array('%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d','%s','%d') );
+		array('%s', '%s', '%s', '%d', '%s', '%s', '%s', '%d', '%d','%s','%d') );
 
 
-		$this->plantDB->insert( 'life_span', 
+	$this->plantDB->insert( 'life_span', 
 		array( 'PlantID' => $plantID,  
 		'life_span_minimum' => $life_span_minimum,
 		'life_span_maximum' => $life_span_maximum), 
-	array('%d','%d') );
+		array('%d','%d') );
 
 
-		$this->plantDB->insert( 'life_span_classifications', 
+	$this->plantDB->insert( 'life_span_classifications', 
 		array( 'PlantID' => $plantID,  
 		'life_span_classifications' => $life_span_classifications), 
-	array('%s') );
+		array('%s') );
 
 
-		$this->plantDB->insert( 'problems', 
+	$this->plantDB->insert( 'problems', 
 		array( 'PlantID' => $plantID,  
 		'toxicity' => $toxicity,
 		'other_problems' => $other_problems),
-	array('%s','%s') );
-
-
-	}
+		array('%s','%s') );
+}
 /*******************************************************************************************/
 
 
 					
 function AddConsumption( $plantID,
-$other_edible_for, 
-$edible_for, 
-$human_edibility, 
-$other_edible_uses, 
-$edible_uses)
-	{
+	$other_edible_for, 
+	$edible_for, 
+	$human_edibility, 
+	$other_edible_uses, 
+	$edible_uses)
+{
 
 
-		$this->plantDB->insert( 'Human_Consumption', 
+	$this->plantDB->insert( 'Human_Consumption', 
 		array( 'PlantID' => $plantID,  
 		'edible_uses' => $edible_uses,
 		'other_edible_uses' => $other_edible_uses,
 		'human_edibility' => $human_edibility),
-	array('%s','%s','%s') );
+		array('%s','%s','%s') );
 
 
-		$this->plantDB->insert( 'livestock_edibility', 
+	$this->plantDB->insert( 'livestock_edibility', 
 		array( 'PlantID' => $plantID,  
 		'edible_for' => $edible_for,
 		'other_edible_for' => $other_edible_for),
-	array('%s','%s') );
-
-		
-	}	
+		array('%s','%s') );
+}	
 
 /*******************************************************************************************/
  
@@ -287,132 +278,113 @@ $edible_uses)
 
 					
 function AddProcessing( $plantID, 
-$other_vegetable_processes,
- $vegetable_processes, 
-$other_fruit_processing, 
-$fruit_processing, 
-$alcohol_processes_resources,
- $description_alcohol_processes_tools, 
-$alcohol_processes, 
-$alcohol_processes_resources)
-	{
+	$other_vegetable_processes,
+	 $vegetable_processes, 
+	$other_fruit_processing, 
+	$fruit_processing, 
+	$alcohol_processes_resources,
+	 $description_alcohol_processes_tools, 
+	$alcohol_processes, 
+	$alcohol_processes_resources)
+{
 
-
-
-		$this->plantDB->insert( 'alcohol_making', 
+	$this->plantDB->insert( 'alcohol_making', 
 		array( 'PlantID' => $plantID,  
 		'alcohol_processes' => $alcohol_processes,
 		'description_alcohol_processes_tools' => $description_alcohol_processes_tools,
 		'alcohol_processes_resources' => $alcohol_processes_resources),
-	array('%s','%s','%s') );
+		array('%s','%s','%s') );
 
-		$this->plantDB->insert( 'fruit_processing', 
+	$this->plantDB->insert( 'fruit_processing', 
 		array( 'PlantID' => $plantID,  
 		'fruit_processing' => $fruit_processing,
 		'other_fruit_processing' => $other_fruit_processing),
-	array('%s','%s') );
+		array('%s','%s') );
 
 
-		$this->plantDB->insert( 'vegetable_processing', 
+	$this->plantDB->insert( 'vegetable_processing', 
 		array( 'PlantID' => $plantID,  
 		'vegetable_processes' => $vegetable_processes,
 		'other_vegetable_processes' => $other_vegetable_processes),
-	array('%s','%s') );
-
-		
-	}	
+		array('%s','%s') );
+}	
 
 /*******************************************************************************************/
  
 
 					
 function AddMedicinals( $plantID, 
-$medicinal_uses, 
-$other_medicinal_uses, 
-$medicinaluseskey, 
-$medicine_processes_resources, 
-$medicine_processes_other, 
-$medicine_processes)
-	{
+	$medicinal_uses, 
+	$other_medicinal_uses, 
+	$medicinaluseskey, 
+	$medicine_processes_resources, 
+	$medicine_processes_other, 
+	$medicine_processes)
+{
 
-
-		$this->plantDB->insert( 'medicine_processes', 
+	$this->plantDB->insert( 'medicine_processes', 
 		array( 'PlantID' => $plantID,  
 		'medicine_processes' => $medicine_processes,
 		'medicine_processes_other' => $medicine_processes_other,
 		'medicine_processes_resources' => $medicine_processes_resources),
-	array('%s','%s','%s') );
-
-
-		$this->plantDB->insert( 'medicinal_uses', 
+		array('%s','%s','%s') );
+	$this->plantDB->insert( 'medicinal_uses', 
 		array( 'PlantID' => $plantID,  
 		'other_medicinal_uses' => $other_medicinal_uses,
 		'medicinaluseskey' => $medicinaluseskey),
-	array('%s','%d') );
-
-
-		$this->plantDB->insert( 'medicinal_uses_description', 
+		array('%s','%d') );
+	$this->plantDB->insert( 'medicinal_uses_description', 
 		array( 'PlantID' => $plantID,  
 		'medicinal_uses' => $medicinal_uses),
-	array('%s') );
-
-
-
-	}	
+		array('%s') );
+}	
 
 /*******************************************************************************************/
  
 					
 function AddIncomeStreams( $plantID, 
-$market_resource_website, 
-$zipcode_of_current_market, 
-$country_of_current_market, 
-$marketing_strategies, 
-$other_marketing_strategies)
-	{
-
-
-		$this->plantDB->insert( 'profitability_of_crops', 
+	$market_resource_website, 
+	$zipcode_of_current_market, 
+	$country_of_current_market, 
+	$marketing_strategies, 
+	$other_marketing_strategies)
+{
+	$this->plantDB->insert( 'profitability_of_crops', 
 		array( 'PlantID' => $plantID,  
 		'market_resource_website' => $market_resource_website,
 		'zipcode_of_current_market' => $zipcode_of_current_market,
 		'country_of_current_market' => $country_of_current_market),
-	array('%s','%s','%s') );
+		array('%s','%s','%s') );
 	
-
-		$this->plantDB->insert( 'marketing_strategies', 
+	$this->plantDB->insert( 'marketing_strategies', 
 		array( 'PlantID' => $plantID,  
 		'marketing_strategies' => $marketing_strategies,
 		'other_marketing_strategies' => $other_marketing_strategies),
-	array('%s','%s') );
-
-	}	
+		array('%s','%s') );
+}	
 
 /*******************************************************************************************/
 
-
 function AddPropagation( $plantID, 
-$other_grafting_method, 
-$grafting_methods, 
-$seeds_per_pound, 
-$country, 
-$seedling_vigor, 
-$seed_size_in_mm, 
-$seed_color, 
-$seed_shape,
-$light_requirements_hours_per_day, 
-$time_to_germination, 
-$time_to_germination, 
-$percentage_germination, 
-$transplantability, 
-$seed_resources, 
-$seeding_instructions, 
-$plant_propagation_method, 
-$plant_propagation_tips)
-	{
-
-
-		$this->plantDB->insert( 'seeds', 
+	$other_grafting_method, 
+	$grafting_methods, 
+	$seeds_per_pound, 
+	$country, 
+	$seedling_vigor, 
+	$seed_size_in_mm, 
+	$seed_color, 
+	$seed_shape,
+	$light_requirements_hours_per_day, 
+	$time_to_germination, 
+	$time_to_germination, 
+	$percentage_germination, 
+	$transplantability, 
+	$seed_resources, 
+	$seeding_instructions, 
+	$plant_propagation_method, 
+	$plant_propagation_tips)
+{
+	$this->plantDB->insert( 'seeds', 
 		array( 'PlantID' => $plantID,  
 		'seeds_per_pound' => $seeds_per_pound, 
 		'country' => $country, 
@@ -426,107 +398,99 @@ $plant_propagation_tips)
 		'transplantability' => $transplantability, 
 		'seed_resources' => $seed_resources,
 		'seeding_instructions' => $seeding_instructions), 
-	array('%d', '%s', '%s', '%d', '%s', '%s', '%d', '%d', '%d','%s','%s','%s') );
+		array('%d', '%s', '%s', '%d', '%s', '%s', '%d', '%d', '%d','%s','%s','%s') );
 
-
-		$this->plantDB->insert( 'Plant_propagations_methods', 
+	$this->plantDB->insert( 'Plant_propagations_methods', 
 		array( 'PlantID' => $plantID,  
 		'plant_propagation_method' => $plant_propagation_method),
-	array('%s') );
+		array('%s') );
 
-		$this->plantDB->insert( 'plant_propagation_tips', 
+	$this->plantDB->insert( 'plant_propagation_tips', 
 		array( 'PlantID' => $plantID,  
 		'plant_propagation_tips' => $plant_propagation_tips),
-	array('%s') );
+		array('%s') );
 
 
-		$this->plantDB->insert( 'grafting_methods', 
+	$this->plantDB->insert( 'grafting_methods', 
 		array( 'PlantID' => $plantID,  
 		'grafting_methods' => $grafting_methods,
 		'other_grafting_method' => $other_grafting_method),
-	array('%s','%s') );
-
-
-	}	
+		array('%s','%s') );
+}	
 
 /*******************************************************************************************/
 
 
 function AddPlantFunctions( $plantID, 
-$non_food_use_other, 
-$nonfoodusekey, 
-$Non_food_Use, 
-$nutrient_fixing, 
-$CN_ratio_dried_plant, 
-$CN_ratio_fresh_plant, 
-$biodynamic_accumulator_mulch_plant, 
-$lumber_usage, 
-$mushroom_substrate,
- $mushroom_substrate_species, 
-$beauty_products, 
-$other_beauty_products, 
-$pollutant_cleaning_capabilities, 
-$sap_use, $other_sap_use)
-	{
-
-		$this->plantDB->insert( 'nonfood_use', 
+	$non_food_use_other, 
+	$nonfoodusekey, 
+	$Non_food_Use, 
+	$nutrient_fixing, 
+	$CN_ratio_dried_plant, 
+	$CN_ratio_fresh_plant, 
+	$biodynamic_accumulator_mulch_plant, 
+	$lumber_usage, 
+	$mushroom_substrate,
+	 $mushroom_substrate_species, 
+	$beauty_products, 
+	$other_beauty_products, 
+	$pollutant_cleaning_capabilities, 
+	$sap_use, $other_sap_use)
+{
+	$this->plantDB->insert( 'nonfood_use', 
 		array( 'PlantID' => $plantID,  
 		'non_food_use_other' => $non_food_use_other,
 		'nonfoodusekey' => $nonfoodusekey),
-	array('%s','%d') );
+		array('%s','%d') );
 
-		$this->plantDB->insert( 'nonfood_use_description', 
+	$this->plantDB->insert( 'nonfood_use_description', 
 		array( 'PlantID' => $plantID,  
 		'Non_food_Use' => $Non_food_Use),
-	array('%s') );
+		array('%s') );
 
-		$this->plantDB->insert( 'nutrient_fixing', 
+	$this->plantDB->insert( 'nutrient_fixing', 
 		array( 'PlantID' => $plantID,  
 		'nutrient_fixing' => $nutrient_fixing),
-	array('%s') );
+		array('%s') );
 
-		$this->plantDB->insert( 'compost', 
+	$this->plantDB->insert( 'compost', 
 		array( 'PlantID' => $plantID,  
 		'CN_ratio_dried_plant' => $CN_ratio_dried_plant,
 		'CN_ratio_fresh_plant' => $CN_ratio_fresh_plant,
 		'biodynamic_accumulator_mulch_plant' => $biodynamic_accumulator_mulch_plant),
-	array('%s','%s','%s') );
+		array('%s','%s','%s') );
 
 
-		$this->plantDB->insert( 'lumber_useage', 
+	$this->plantDB->insert( 'lumber_useage', 
 		array( 'PlantID' => $plantID,  
 		'lumber_usage' => $lumber_usaage,
 		'other_lumber_use' => $other_lumber_use),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'mushroom_substrate', 
+	$this->plantDB->insert( 'mushroom_substrate', 
 		array( 'PlantID' => $plantID,  
 		'mushroom_substrate' => $mushroom_substrate,
 		'mushroom_substrate_species' => $mushroom_substrate_species),
-	array('%s','%s') );
+		array('%s','%s') );
 
 
-		$this->plantDB->insert( 'beauty_products', 
+	$this->plantDB->insert( 'beauty_products', 
 		array( 'PlantID' => $plantID,  
 		'beauty_products' => $beauty_products,
 		'other_beauty_products' => $other_beauty_products),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'pollutant_cleaning', 
+	$this->plantDB->insert( 'pollutant_cleaning', 
 		array( 'PlantID' => $plantID,  
 		'pollutant_cleaning_capabilities' => $pollutant_cleaning_capabilities),
-	array('%s') );
+		array('%s') );
 
-		$this->plantDB->insert( 'sap_use', 
+	$this->plantDB->insert( 'sap_use', 
 		array( 'PlantID' => $plantID,  
 		'sap_use' => $sap_use,
 		'other_sap_use' => $other_sap_use),
-	array('%s','%s') );
-
-
-
-
-	}	
+		array('%s','%s') );
+}	
 
 /*******************************************************************************************/
 
@@ -542,46 +506,41 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		$tolerates_flooding, $hedge_wind_control, $compact_soil_breaker, $coppiceable_poulardable, $indication_of,
 	$native_habitat, $nativehabitatkey)
 { 
-		$this->plantDB->insert( 'plant_functions_in_environment_descriptions', 
+	$this->plantDB->insert( 'plant_functions_in_environment_descriptions', 
 		array( 'PlantID' => $plantID,  
 		'plant_functions_in_environment' => $plant_functions_in_environment),
-	array('%s'));
+		array('%s'));
 
-		$this->plantDB->insert( 'layers_plant_type', 
+	$this->plantDB->insert( 'layers_plant_type', 
 		array( 'PlantID' => $plantID,  
 		'layers_plant_type' => $layers_plant_type),
-	array('%s') );
+		array('%s') );
 
-
-		$this->plantDB->insert( 'plant_guilds', 
+	$this->plantDB->insert( 'plant_guilds', 
 		array( 'PlantID' => $plantID,  
 		'other_plant_guilds' => $other_plant_guilds,
 		'plantguildskey' => $plantguildskey),
-	array('%s','%d') );
+		array('%s','%d') );
 
-
-
-		$this->plantDB->insert( 'plant_guilds_descriptions', 
+	$this->plantDB->insert( 'plant_guilds_descriptions', 
 		array( 'PlantID' => $plantID,  
 		'plant_guilds' => $plant_guilds),
-	array('%s') );
+		array('%s') );
 
-
-		$this->plantDB->insert( 'landscape_application', 
+	$this->plantDB->insert( 'landscape_application', 
 		array( 'PlantID' => $plantID,  
 		'landscape_application' => $landscape_application,
 		'other_landscape_application' => $other_landscape_application),
-	array('%s','%s') );
-
+		array('%s','%s') );
 	
-		$this->plantDB->insert( 'soil_content_preferences', 
+	$this->plantDB->insert( 'soil_content_preferences', 
 		array( 'PlantID' => $plantID,  
 		'soil_content_preferences' => $soil_content_preferences,
 		'other_content_preferences' => $other_content_preferences),
-	array('%s','%s') );
+		array('%s','%s') );
 
 
-		$this->plantDB->insert( 'habitat_preferences', 
+	$this->plantDB->insert( 'habitat_preferences', 
 		array( 'PlantID' => $plantID,  
 		'tolerates_drought' => $tolerates_drought,
 		'erosion_control_use' => $erosion_control_use,
@@ -601,50 +560,47 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		'compact_soil_breaker' => $compact_soil_breaker,
 		'coppiceable_poulardable' => $coppiceable_poulardable,
 		'indication_of' => $indication_of ),
-	array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s') );
+		array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s') );
 
-		$this->plantDB->insert( 'plant_native_habitat_descriptions', 
+	$this->plantDB->insert( 'plant_native_habitat_descriptions', 
 		array( 'PlantID' => $plantID,  
 		'native_habitat' => $native_habitat),
-	array('%s') );
+		array('%s') );
 
 
-		$this->plantDB->insert( 'plant_native_habitat', 
+	$this->plantDB->insert( 'plant_native_habitat', 
 		array( 'PlantID' => $plantID,  
 		'nativehabitatkey' => $nativehabitatkey),
-	array('%d') );
-		}	
+		array('%d') );
+}	
 
 /*******************************************************************************************/
 
-
-
-
 function AddDiseases($plantID, 
-$plant_diseases_other, 
-$plant_diseaseskey, 
-$plant_diseaseskey, 
-$disease_treatments_description, 
-$disease_treatments_resources)
+	$plant_diseases_other, 
+	$plant_diseaseskey, 
+	$plant_diseaseskey, 
+	$disease_treatments_description, 
+	$disease_treatments_resources)
 {
 	
-		$this->plantDB->insert( 'plant_diseases', 
+	$this->plantDB->insert( 'plant_diseases', 
 		array( 'PlantID' => $plantID,  
 		'plant_diseases_other' => $plant_diseases_other,
 		'plant_diseaseskey' => $plant_diseaseskey),
-	array('%s','%d') );
+		array('%s','%d') );
 
-		$this->plantDB->insert( 'plant_diseases_description', 
+	$this->plantDB->insert( 'plant_diseases_description', 
 		array( 'PlantID' => $plantID,  
 		'plant_diseases' => $plant_diseases),
-	array('%s') );
+		array('%s') );
 
 
-		$this->plantDB->insert( 'disease_treatments', 
+	$this->plantDB->insert( 'disease_treatments', 
 		array( 'PlantID' => $plantID,  
 		'disease_treatments_description' => $disease_treatments_description,
 		'disease_treatments_resources' => $disease_treatments_resources),
-	array('%s','%s') );
+		array('%s','%s') );
 }
 
 
@@ -652,51 +608,49 @@ $disease_treatments_resources)
 
 
 function AddMaintenance($plantID, 
-$fruiting_habit, 
-$other_fruiting_habit, 
-$litter_type, 
-$other_litter_type, 
-$propagation_control_methods, 
-$other_propagation_control_methods, 
-$growth_season, 
-$extra_watering_needed, 
-$extra_observation_needed, 
-$vegetable_season) 
-
-
+	$fruiting_habit, 
+	$other_fruiting_habit, 
+	$litter_type, 
+	$other_litter_type, 
+	$propagation_control_methods, 
+	$other_propagation_control_methods, 
+	$growth_season, 
+	$extra_watering_needed, 
+	$extra_observation_needed, 
+	$vegetable_season) 
 {
-		$this->plantDB->insert( 'fruiting_habit', 
+	$this->plantDB->insert( 'fruiting_habit', 
 		array( 'PlantID' => $plantID,  
 		'fruiting_habit' => $fruiting_habit,
 		'other_fruiting_habit' => $other_fruiting_habit),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'litter_type', 
+	$this->plantDB->insert( 'litter_type', 
 		array( 'PlantID' => $plantID,  
 		'litter_type' => $litter_type,
 		'other_litter_type' => $other_litter_type),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'propagation_control_methods', 
+	$this->plantDB->insert( 'propagation_control_methods', 
 		array( 'PlantID' => $plantID,  
 		'propagation_control_methods' => $propagation_control_methods,
 		'other_propagation_control_methods' => $other_propagation_control_methods ),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'seasonal_growth_and_watering', 
+	$this->plantDB->insert( 'seasonal_growth_and_watering', 
 		array( 'PlantID' => $plantID,  
 		'growth_season' => $growth_season,
 		'extra_watering_needed' => $extra_watering_needed,
 		'extra_observation_needed' => $extra_observation_needed,
 		'first_sap' => $first_sap,
 		'first_leaf' => $first_leaf),
-	array('%s','%s','%s','%s','%s') );
+		array('%s','%s','%s','%s','%s') );
 
 
-		$this->plantDB->insert( 'vegetable_season', 
+	$this->plantDB->insert( 'vegetable_season', 
 		array( 'PlantID' => $plantID,  
 		'vegetable_season' => $vegetable_season),
-	array('%s') );
+		array('%s') );
 
 }
 
@@ -705,71 +659,67 @@ $vegetable_season)
 
 
 function AddAttractionandrepulsion($plantID, 
-$Deterrence_characteristics,
- $other_deterrence, 
-$flowering_time_min, 
-$flowering_time_max, 
-$beneficial_insect_laying,
- $beneficial_insect_nectar_or_food, 
-$beneficial_insect_shelter, 
-$predators_scientificname, 
-$predators_commonname, 
-$pests_scientificname, 
-$pests_commonname )
-
+	$Deterrence_characteristics,
+	 $other_deterrence, 
+	$flowering_time_min, 
+	$flowering_time_max, 
+	$beneficial_insect_laying,
+	 $beneficial_insect_nectar_or_food, 
+	$beneficial_insect_shelter, 
+	$predators_scientificname, 
+	$predators_commonname, 
+	$pests_scientificname, 
+	$pests_commonname )
 {
-		$this->plantDB->insert( 'Deterrence', 
+	$this->plantDB->insert( 'Deterrence', 
 		array( 'PlantID' => $plantID,  
 		'Deterrence_characteristics' => $Deterrence_characteristics,
 		'other_deterrence' => $other_deterrence),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'Attraction', 
+	$this->plantDB->insert( 'Attraction', 
 		array( 'PlantID' => $plantID,  
 		'flowering_time_min' => $flowering_time_min,
 		'flowering_time_max' => $flowering_time_max,
 		'beneficial_insect_laying' => $beneficial_insect_laying,
 		'beneficial_insect_nectar_or_food' => $beneficial_insect_nectar_or_food,
 		'beneficial_insect_shelter' => $beneficial_insect_shelter),
-	array('%s','%s','%s','%s') );
+		array('%s','%s','%s','%s') );
 
 
-		$this->plantDB->insert( 'predators', 
+	$this->plantDB->insert( 'predators', 
 		array( 'PlantID' => $plantID,  
 		'predators_scientificname' => $predators_scientificname,
 		'predators_commonname' => $predators_commonname ),
-	array('%s','%s') );
+		array('%s','%s') );
 
-		$this->plantDB->insert( 'pests', 
+	$this->plantDB->insert( 'pests', 
 		array( 'PlantID' => $plantID,  
 		'pests_scientificname' => $pests_scientificname,
 		'pests_commonname' => $pests_commonname),
-	array('%s','%s') );
-
-	
+		array('%s','%s') );	
 }
 
 
 /*******************************************************************************************/
+function getNumericOptions( $minNumber, $maxNumber, $label )
+{	
+	$options = '';
+	for( $ii = $minNumber; $ii <= $maxNumber; $ii++ )
+	{
+		$options .= '<option value=' . $ii . '>'. $label . ' ' . $ii . '</option>';
+	}
+	return $options;
+}
 
-	function getNumericOptions( $minNumber, $maxNumber, $label )
-	{	
-		$options = '';
-		for( $ii = $minNumber; $ii <= $maxNumber; $ii++ )
-		{
-			$options .= '<option value=' . $ii . '>'. $label . ' ' . $ii . '</option>';
-		}
-		return $options;
-	}
-	
-	function getNumericOptionsShortcode( $atts )
-	{	
-		extract( shortcode_atts( array(
-				'min_number' => 0,
-				'max_number' => 1,
-				'label'=>' ' ), $atts ) );
-		return $this->getNumericOptions ($min_number, $max_number, $label );
-	}
+function getNumericOptionsShortcode( $atts )
+{	
+	extract( shortcode_atts( array(
+			'min_number' => 0,
+			'max_number' => 1,
+			'label'=>' ' ), $atts ) );
+	return $this->getNumericOptions ($min_number, $max_number, $label );
+}
 /*******************************************************************************************/	
 function enumDropdown($table_name, $column_name, $echo = false)
 {
@@ -782,7 +732,7 @@ function enumDropdown($table_name, $column_name, $echo = false)
     
 	foreach( explode(',', $matches[1]) as $value )
     {
-         $selectDropdown .= "<option value=" . trim( $value, "'" ) . ">$value</option>";
+         $selectDropdown .= "<option value=" . trim( $value, "'" ) . ">" . trim( $value, "'" ) . "</option>";
     }   
 	
     $selectDropdown .= "</select>";
@@ -802,127 +752,127 @@ function enumDropdownShortcode( $atts )
 	return $this->enumDropdown($table, $column, $echo);
 }
 /*******************************************************************************************/
-	function LoadSearchPage()  // we may or may not use the $atts variable - it's there if we need parameters for our Search Page
-	{
-		
-		$output = '';
-		if ( isset ($_POST["common_name"]) )
-		{
-		/* I have not yet found a way, in a wordpress plugin, to get around processing the */
-		/* form in the same function that you create it */
-		/* this is the portion that processes the form */
-
-		$plantID = $this->AddGeneral( $_POST["common_name"], 
-		$_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"],
-		$_POST["alternative_name_language"], $_POST["alternate_names"], 
-		$_POST["variety_name"], $_POST["tips"]);
-		
-		$this->AddRegionalCharacteristics( $plantID, $_POST["hardiness_zone_max"],  
-		$_POST["hardiness_zone_min"], $_POST["Sunset_zones"],  
-		$_POST["chill_hours_min"], $_POST["chill_hours_max"],  
-		$_POST["heat_zone_min"], $_POST["heat_zone_max"],  
-		$_POST["frost_free_days_needed"], $_POST["sunlight_hours_for_fruiting"],  
-		$_POST["tips"]); 
- 
-		$this->AddHarvesting( $plantID,  $_POST["maximum_bearing_lbs"],   
-		$_POST["harvest_time_days_after_last_frost_min"],   
-		$_POST["harvest_time_days_after_last_frost_max"],   
-		$_POST["seedless_fruits"],  $_POST["years_until_first_bearing"],   
-		$_POST["years_until_full_bearing"],  $_POST["storageability"],   
-		$_POST["ease_of_harvest"], $_POST["fruiting_frequency_other"],  
-		$_POST["fruiting_frequency"], $_POST["fruit_color"], $_POST["fruit_type"] );
-		
-		$this->AddPhysicalCharacteristics( $plantID,  $_POST["Alleopathic"],  
-		$_POST["Thorns"], $_POST["epiphyte_attractive"],  
-		$_POST["percentage_shade_underneath"], $_POST["growth_speed"],  
-		$_POST["branch_strength"],  $_POST["fire_resistance"],  
-		$_POST["after_harvest_regrowth_rate_inches_per_month"],  
-		$_POST["mature_size_max"], $_POST["blocks_alleopathy"],  
-		$_POST["mature_size_min"], $_POST["life_span_minimum"],  
-		$_POST["life_span_maximum"], $_POST["life_span_classifications"],  
-		$_POST["flower_color"], $_POST["root_characteristics"],  
-		$_POST["plant_shape"], $_POST["leaf_color"],  
-		$_POST["fall_leaf_color"], $_POST["leaf_drop"],  
-		$_POST["toxicity"], $_POST["other_problems"]);
-
-
-		$this->AddConsumption( $plantID, $_POST["other_edible_for"],  
-		$_POST["edible_for"], $_POST["human_edibility"],  
-		$_POST["other_edible_uses"], $_POST["edible_uses"] );
-
-
-		$this->AddProcessing( $plantID, $_POST["other_vegetable_processes"],  
-		$_POST["vegetable_processes"], $_POST["other_fruit_processing"],  
-		$_POST["fruit_processing"], $_POST["alcohol_processes_resources"],  
-		$_POST["description_alcohol_processes_tools"], $_POST["alcohol_processes"],  
-		$_POST["alcohol_processes_resources"]);
-
-		$this->AddMedicinals( $plantID, $_POST["medicinal_uses"],  
-		$_POST["other_medicinal_uses"], $_POST["medicinaluseskey"],  
-		$_POST["medicine_processes_resources"], $_POST["medicine_processes_other"],  
-		$_POST["medicine_processes"]);
-
-		$this->AddIncomeStreams( $plantID, $_POST["market_resource_website"],  
-		$_POST["zipcode_of_current_market"], $_POST["country_of_current_market"],  
-		$_POST["marketing_strategies"], $_POST["other_marketing_strategies"]);
+function LoadSearchPage()  // we may or may not use the $atts variable - it's there if we need parameters for our Search Page
+{
 	
+	$output = '';
+	if ( isset ($_POST["common_name"]) )
+	{
+	/* I have not yet found a way, in a wordpress plugin, to get around processing the */
+	/* form in the same function that you create it */
+	/* this is the portion that processes the form */
+
+	$plantID = $this->AddGeneral( $_POST["common_name"], 
+	$_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"],
+	$_POST["alternative_name_language"], $_POST["alternate_names"], 
+	$_POST["variety_name"], $_POST["tips"]);
+	
+	$this->AddRegionalCharacteristics( $plantID, $_POST["hardiness_zone_max"],  
+	$_POST["hardiness_zone_min"], $_POST["Sunset_zones"],  
+	$_POST["chill_hours_min"], $_POST["chill_hours_max"],  
+	$_POST["heat_zone_min"], $_POST["heat_zone_max"],  
+	$_POST["frost_free_days_needed"], $_POST["sunlight_hours_for_fruiting"],  
+	$_POST["tips"]); 
+
+	$this->AddHarvesting( $plantID,  $_POST["maximum_bearing_lbs"],   
+	$_POST["harvest_time_days_after_last_frost_min"],   
+	$_POST["harvest_time_days_after_last_frost_max"],   
+	$_POST["seedless_fruits"],  $_POST["years_until_first_bearing"],   
+	$_POST["years_until_full_bearing"],  $_POST["storageability"],   
+	$_POST["ease_of_harvest"], $_POST["fruiting_frequency_other"],  
+	$_POST["fruiting_frequency"], $_POST["fruit_color"], $_POST["fruit_type"] );
+	
+	$this->AddPhysicalCharacteristics( $plantID,  $_POST["Alleopathic"],  
+	$_POST["Thorns"], $_POST["epiphyte_attractive"],  
+	$_POST["percentage_shade_underneath"], $_POST["growth_speed"],  
+	$_POST["branch_strength"],  $_POST["fire_resistance"],  
+	$_POST["after_harvest_regrowth_rate_inches_per_month"],  
+	$_POST["mature_size_max"], $_POST["blocks_alleopathy"],  
+	$_POST["mature_size_min"], $_POST["life_span_minimum"],  
+	$_POST["life_span_maximum"], $_POST["life_span_classifications"],  
+	$_POST["flower_color"], $_POST["root_characteristics"],  
+	$_POST["plant_shape"], $_POST["leaf_color"],  
+	$_POST["fall_leaf_color"], $_POST["leaf_drop"],  
+	$_POST["toxicity"], $_POST["other_problems"]);
 
 
-		$this->AddPropagation($plantID, $_POST["other_grafting_method"],  
-		$_POST["grafting_methods"], $_POST["seeds_per_pound"], $_POST["country"],  
-		$_POST["seedling_vigor"], $_POST["seed_size_in_mm"], $_POST["seed_color"],  
-		$_POST["seed_shape"], $_POST["light_requirements_hours_per_day"],  
-		$_POST["time_to_germination"], $_POST["time_to_germination"],  
-		$_POST["percentage_germination"], $_POST["transplantability"],  
-		$_POST["seed_resources"], $_POST["seeding_instructions"],  
-		$_POST["plant_propagation_method"], $_POST["plant_propagation_tips"]);
+	$this->AddConsumption( $plantID, $_POST["other_edible_for"],  
+	$_POST["edible_for"], $_POST["human_edibility"],  
+	$_POST["other_edible_uses"], $_POST["edible_uses"] );
 
 
-		$this->AddPlantFunctions( $plantID, $_POST["non_food_use_other"],  
-		$_POST["nonfoodusekey"], $_POST["Non_food_Use"], $_POST["nutrient_fixing"],  
-		$_POST["CN_ratio_dried_plant"], $_POST["CN_ratio_fresh_plant"],  
-		$_POST["biodynamic_accumulator_mulch_plant"], $_POST["lumber_usage"],  
-		$_POST["mushroom_substrate"], $_POST["mushroom_substrate_species"],  
-		$_POST["beauty_products"], $_POST["other_beauty_products"],  
-		$_POST["pollutant_cleaning_capabilities"], $_POST["sap_use"],  
-		$_POST["other_sap_use"]);
+	$this->AddProcessing( $plantID, $_POST["other_vegetable_processes"],  
+	$_POST["vegetable_processes"], $_POST["other_fruit_processing"],  
+	$_POST["fruit_processing"], $_POST["alcohol_processes_resources"],  
+	$_POST["description_alcohol_processes_tools"], $_POST["alcohol_processes"],  
+	$_POST["alcohol_processes_resources"]);
+
+	$this->AddMedicinals( $plantID, $_POST["medicinal_uses"],  
+	$_POST["other_medicinal_uses"], $_POST["medicinaluseskey"],  
+	$_POST["medicine_processes_resources"], $_POST["medicine_processes_other"],  
+	$_POST["medicine_processes"]);
+
+	$this->AddIncomeStreams( $plantID, $_POST["market_resource_website"],  
+	$_POST["zipcode_of_current_market"], $_POST["country_of_current_market"],  
+	$_POST["marketing_strategies"], $_POST["other_marketing_strategies"]);
 
 
-		$this->AddHabitatandCommunity($plantID, $_POST["plant_functions_in_environment"], 
-		 $_POST["layers_plant_type"], $_POST["other_plant_guilds"],  
-		$_POST["plantguildskey"], $_POST["plant_guilds"],  
-		$_POST["landscape_application"], $_POST["other_landscape_application"], 
-		 $_POST["soil_content_preferences"], $_POST["other_content_preferences"],  
-		$_POST["tolerates_drought"], $_POST["erosion_control_use"],  
-		$_POST["juglone_tolerant"], $_POST["pollution_tolerant"],  
-		$_POST["storm_water_retention"], $_POST["soil_salinity_tolerant"], 
-		 $_POST["sun_tolerance_hrs"], $_POST["altitude_preference_min"], 
-		 $_POST["rooftop_garden"], $_POST["container_plant"],  
-		$_POST["altitude_preference_max"], $_POST["terrarium"],  
-		$_POST["tolerates_flooding"], $_POST["hedge_wind_control"],  
-		$_POST["compact_soil_breaker"], $_POST["coppiceable_poulardable"],  
-		$_POST["native_habitat"], $_POST["nativehabitatkey"], $_POST["indication_of"]);
 
-		$this->AddDiseases($plantID, $_POST["plant_diseases_other"],  
-		$_POST["plant_diseaseskey"], $_POST["plant_diseaseskey"],  
-		$_POST["disease_treatments_description"], $_POST["disease_treatments_resources"]);
+	$this->AddPropagation($plantID, $_POST["other_grafting_method"],  
+	$_POST["grafting_methods"], $_POST["seeds_per_pound"], $_POST["country"],  
+	$_POST["seedling_vigor"], $_POST["seed_size_in_mm"], $_POST["seed_color"],  
+	$_POST["seed_shape"], $_POST["light_requirements_hours_per_day"],  
+	$_POST["time_to_germination"], $_POST["time_to_germination"],  
+	$_POST["percentage_germination"], $_POST["transplantability"],  
+	$_POST["seed_resources"], $_POST["seeding_instructions"],  
+	$_POST["plant_propagation_method"], $_POST["plant_propagation_tips"]);
 
 
-		$this->AddMaintenance($plantID, $_POST["fruiting_habit"], 
-		$_POST["other_fruiting_habit"], $_POST["litter_type"],  
-		$_POST["other_litter_type"], $_POST["propagation_control_methods"],  
-		$_POST["other_propagation_control_methods"], $_POST["growth_season"],  
-		$_POST["extra_watering_needed"], $_POST["extra_observation_needed"],  
-		$_POST["vegetable_season"]); 
+	$this->AddPlantFunctions( $plantID, $_POST["non_food_use_other"],  
+	$_POST["nonfoodusekey"], $_POST["Non_food_Use"], $_POST["nutrient_fixing"],  
+	$_POST["CN_ratio_dried_plant"], $_POST["CN_ratio_fresh_plant"],  
+	$_POST["biodynamic_accumulator_mulch_plant"], $_POST["lumber_usage"],  
+	$_POST["mushroom_substrate"], $_POST["mushroom_substrate_species"],  
+	$_POST["beauty_products"], $_POST["other_beauty_products"],  
+	$_POST["pollutant_cleaning_capabilities"], $_POST["sap_use"],  
+	$_POST["other_sap_use"]);
 
 
-		$this->AddAttractionandrepulsion($plantID, $_POST["Deterrence_characteristics"], 
-		 $_POST["other_deterrence"], $_POST["flowering_time_min"],  
-		$_POST["flowering_time_max"], $_POST["beneficial_insect_laying"],  
-		$_POST["beneficial_insect_nectar_or_food"],  
-		$_POST["beneficial_insect_shelter"], $_POST["predators_scientificname"], 
-		 $_POST["predators_commonname"], $_POST["pests_scientificname"],  
-		$_POST["pests_commonname"]);
+	$this->AddHabitatandCommunity($plantID, $_POST["plant_functions_in_environment"], 
+	 $_POST["layers_plant_type"], $_POST["other_plant_guilds"],  
+	$_POST["plantguildskey"], $_POST["plant_guilds"],  
+	$_POST["landscape_application"], $_POST["other_landscape_application"], 
+	 $_POST["soil_content_preferences"], $_POST["other_content_preferences"],  
+	$_POST["tolerates_drought"], $_POST["erosion_control_use"],  
+	$_POST["juglone_tolerant"], $_POST["pollution_tolerant"],  
+	$_POST["storm_water_retention"], $_POST["soil_salinity_tolerant"], 
+	 $_POST["sun_tolerance_hrs"], $_POST["altitude_preference_min"], 
+	 $_POST["rooftop_garden"], $_POST["container_plant"],  
+	$_POST["altitude_preference_max"], $_POST["terrarium"],  
+	$_POST["tolerates_flooding"], $_POST["hedge_wind_control"],  
+	$_POST["compact_soil_breaker"], $_POST["coppiceable_poulardable"],  
+	$_POST["native_habitat"], $_POST["nativehabitatkey"], $_POST["indication_of"]);
+
+	$this->AddDiseases($plantID, $_POST["plant_diseases_other"],  
+	$_POST["plant_diseaseskey"], $_POST["plant_diseaseskey"],  
+	$_POST["disease_treatments_description"], $_POST["disease_treatments_resources"]);
+
+
+	$this->AddMaintenance($plantID, $_POST["fruiting_habit"], 
+	$_POST["other_fruiting_habit"], $_POST["litter_type"],  
+	$_POST["other_litter_type"], $_POST["propagation_control_methods"],  
+	$_POST["other_propagation_control_methods"], $_POST["growth_season"],  
+	$_POST["extra_watering_needed"], $_POST["extra_observation_needed"],  
+	$_POST["vegetable_season"]); 
+
+
+	$this->AddAttractionandrepulsion($plantID, $_POST["Deterrence_characteristics"], 
+	 $_POST["other_deterrence"], $_POST["flowering_time_min"],  
+	$_POST["flowering_time_max"], $_POST["beneficial_insect_laying"],  
+	$_POST["beneficial_insect_nectar_or_food"],  
+	$_POST["beneficial_insect_shelter"], $_POST["predators_scientificname"], 
+	 $_POST["predators_commonname"], $_POST["pests_scientificname"],  
+	$_POST["pests_commonname"]);
 
 
 if (isset($_POST['native_habitat'])) {
@@ -1027,8 +977,6 @@ if (isset($_POST['growth_season'])) {
 
 for ($i = 0; $i < count($growthseason_array); $i++)
 ;
-/* you can take each chunk of these and add it to a function. */
-
 
 /*image upload script*/
 
@@ -1297,9 +1245,6 @@ return $output;
 $output .= '<head>' . PHP_EOL;
 
 /* scripts */
-$output .= '<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>' . PHP_EOL;
-$output .= '<script type="text/javascript" src="http://www.sanwebe.com/wp-content/themes/sanwebe/js/jquery-1.10.2.min.js"></script>' . PHP_EOL;
-$output .= '<script type="text/javascript" src="http://www.sanwebe.com/wp-content/themes/sanwebe/js/bodyscript.min.js"></script>' . PHP_EOL;
 
 
 $output .= '<script type="text/javascript">' . PHP_EOL;
@@ -1308,10 +1253,12 @@ $output .= '  jQuery(".content").hide();' . PHP_EOL;
 $output .= '  //toggle the component with class msg_body' . PHP_EOL;
 $output .= '  jQuery(".heading").click(function()' . PHP_EOL;
 $output .= '  {' . PHP_EOL;
-$output .= '    jQuery(this).next(".content").slideToggle(500);' . PHP_EOL;
+$output .= '    jQuery(this).next(".content").slideToggle();' . PHP_EOL;
 $output .= '  });' . PHP_EOL;
 $output .= '});' . PHP_EOL;
 $output .= '</script>' . PHP_EOL;
+
+
 
 /* style */
 
@@ -1360,12 +1307,16 @@ $output .= '<br>Alternate Names: <input type="text" name="alternate_names"> ' . 
 $output .= '<br>Language of name: <input type="text" name="alternate_name_language">  ' . PHP_EOL;
 $output .= '<br>Variety: <input type="text" name="variety_name">' . PHP_EOL;
 $output .= '<br> Tips: <textarea cols="30" rows="3" input type="text" name="Tips"></textarea>' . PHP_EOL;
-$output .= '<br>Add up to three images, all files must be under 1 MB in size and must have image file extensions. <label for="file">Filename:</label>' . PHP_EOL;
-$output .= '<input type="file" name="file" id="file">' . PHP_EOL;
-$output .= '<br><label for="file">Filename:</label>' . PHP_EOL;
-$output .= '<input type="file" name="file" id="file">' . PHP_EOL;
-$output .= '<br><label for="file">Filename:</label>' . PHP_EOL;
-$output .= '<input type="file" name="file" id="file">' . PHP_EOL;
+$output .= '<br>Add Images, all files must be under 1 MB and have image file extensions. ' . PHP_EOL;
+$output .= '<span class="small"><a href="#" id="AddMoreFileBox" class="btn btn-info">Add More Field</a></span></p> ' . PHP_EOL;
+$output .= '<div id="InputsWrapper"> ' . PHP_EOL;
+$output .= '<div><input type="text" name="mytext[]" id="field_1" value="Text 1"/><a href="#" class="removeclass">&times;</a></div> ' . PHP_EOL;
+$output .= '</div> ' . PHP_EOL;
+$output .= '<div class "tester"> ' . PHP_EOL;
+$output .= '<div class "inner"> Hello </div> ' . PHP_EOL;
+$output .= '<div class "inner"> Goodbye </div> ' . PHP_EOL;
+$output .= '</div> ' . PHP_EOL;
+
 $output .= 'ADD ZIP CODE LINK' . PHP_EOL;
 $output .= '</div> ' . PHP_EOL;
 
@@ -1876,7 +1827,11 @@ $output .= '<div class="content">'. PHP_EOL;
  $output .= '	</form> '. PHP_EOL; "\n";
 			
 			/* $output is your variable, you're adding to it by using the ".=" operator (it's like += for strings) */
-			
+
+$output .= '<script>' . PHP_EOL;
+$output .= '$( ".inner" ).append( "<p>Test</p>" );' . PHP_EOL;
+$output .= '});' . PHP_EOL;
+$output .= '</script>' . PHP_EOL;			
 
 			
 			/* whatever you return will display in the source of your page */
