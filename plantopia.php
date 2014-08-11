@@ -494,6 +494,8 @@ function AddPlantFunctions( $plantID,
 
 /*******************************************************************************************/
 
+<<<<<<< HEAD
+=======
 
 <<<<<<< HEAD
 
@@ -531,6 +533,7 @@ $tolerates_rocky_soil,
 $tolerates_mowing)
 
 =======
+>>>>>>> origin/master
 function AddHabitatandCommunity($plantID, $plant_functions_in_environment, 
 	$layers_plant_type, 
 	$other_plant_guilds, $plantguildskey, $plant_guilds, 
@@ -541,6 +544,10 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		$rooftop_garden, $container_plant, $altitude_preference_max, $terrarium, 
 		$tolerates_flooding, $hedge_wind_control, $compact_soil_breaker, $coppiceable_poulardable, $indication_of,
 	$native_habitat, $nativehabitatkey)
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 >>>>>>> origin/master
 { 
 	$this->plantDB->insert( 'plant_functions_in_environment_descriptions', 
@@ -597,14 +604,20 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		'compact_soil_breaker' => $compact_soil_breaker,
 		'coppiceable_poulardable' => $coppiceable_poulardable,
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 		'indication_of' => $indication_of,
 		'tolerates_compaction' => $tolerates_compaction,
 		'tolerates_rocky_soil' => $tolerates_rocky_soil,
 		'tolerates_mowing' => $tolerats_mowing),
 	array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s','%s','%s') );
+<<<<<<< HEAD
+=======
 =======
 		'indication_of' => $indication_of ),
 		array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s') );
+>>>>>>> origin/master
 >>>>>>> origin/master
 
 	$this->plantDB->insert( 'plant_native_habitat_descriptions', 
@@ -814,6 +827,9 @@ function LoadSearchPage()  // we may or may not use the $atts variable - it's th
 	
 <<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
 		$this->AddPropagation($plantID, $_POST["other_grafting_method"],  
 		$_POST["grafting_methods"], $_POST["seeds_per_pound"], $_POST["country"],  
 		$_POST["seedling_vigor"], $_POST["seed_size_in_mm"], $_POST["seed_color"],  
@@ -874,6 +890,7 @@ function LoadSearchPage()  // we may or may not use the $atts variable - it's th
 
 
 =======
+>>>>>>> origin/master
 	$this->AddRegionalCharacteristics( $plantID, $_POST["hardiness_zone_max"],  
 	$_POST["hardiness_zone_min"], $_POST["Sunset_zones"],  
 	$_POST["chill_hours_min"], $_POST["chill_hours_max"],  
@@ -1257,6 +1274,9 @@ Seeds per pound:    ". $_POST["seeds_per_pound"] .
 "<br> Beauty Products:   " . $_POST["beauty_products"] . 
 "<br> Other: " . $_POST["other_beauty_products"] . 
 
+<<<<<<< HEAD
+"<br>Habitat: Native Habitat (WWF): "   . $nativehabitat .
+=======
 
 
 
@@ -1297,6 +1317,7 @@ Seeds per pound:    ". $_POST["seeds_per_pound"] .
 "<br> Plant tolerance of mowing: " . $_POST["tolerates_mowing"] .
 =======
 <br>Habitat: Native Habitat (WWF): "   . $nativehabitat .
+>>>>>>> origin/master
 "<br>Preferred Habitat Conditions: 
 <br>Tolerates Drought:   " . $_POST["tolerates_drought"] .
 "<br>Tolerates Flooding:   " . $_POST["tolerates_flooding"] .
@@ -1848,7 +1869,11 @@ $output .= $this->enumDropdown(layers_plant_type, layers_plant_type). PHP_EOL;
 <<<<<<< HEAD
  $output .= ' Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS. AND ADD NON-Companion plants, plants to avoid.'. PHP_EOL;
 =======
+<<<<<<< HEAD
+ $output .= ' Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS. AND ADD NON-Companion plants, plants to avoid.'. PHP_EOL;
+=======
  $output .= '<br>Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS.'. PHP_EOL;
+>>>>>>> origin/master
 >>>>>>> origin/master
  $output .= '<BR> Plant Guilds:   ' . PHP_EOL;
 $output .= $this->enumDropdown(plant_guilds, plant_guilds). PHP_EOL;
