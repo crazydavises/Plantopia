@@ -494,6 +494,7 @@ function AddPlantFunctions( $plantID,
 
 /*******************************************************************************************/
 
+
 function AddHabitatandCommunity($plantID, $plant_functions_in_environment, 
 	$layers_plant_type, 
 	$other_plant_guilds, $plantguildskey, $plant_guilds, 
@@ -504,7 +505,6 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		$rooftop_garden, $container_plant, $altitude_preference_max, $terrarium, 
 		$tolerates_flooding, $hedge_wind_control, $compact_soil_breaker, $coppiceable_poulardable, $indication_of,
 	$native_habitat, $nativehabitatkey)
-
 { 
 	$this->plantDB->insert( 'plant_functions_in_environment_descriptions', 
 		array( 'PlantID' => $plantID,  
@@ -563,7 +563,8 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		'tolerates_compaction' => $tolerates_compaction,
 		'tolerates_rocky_soil' => $tolerates_rocky_soil,
 		'tolerates_mowing' => $tolerats_mowing),
-	array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s','%s','%s') );
+		'indication_of' => $indication_of ),
+		array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s') );
 
 	$this->plantDB->insert( 'plant_native_habitat_descriptions', 
 		array( 'PlantID' => $plantID,  
@@ -769,7 +770,66 @@ function LoadSearchPage()  // we may or may not use the $atts variable - it's th
 	$_POST["latin_name"] , $_POST["family"], $_POST["resources_for_more_info"],
 	$_POST["alternative_name_language"], $_POST["alternate_names"], 
 	$_POST["variety_name"], $_POST["tips"]);
-	
+
+
+		$this->AddPropagation($plantID, $_POST["other_grafting_method"],  
+		$_POST["grafting_methods"], $_POST["seeds_per_pound"], $_POST["country"],  
+		$_POST["seedling_vigor"], $_POST["seed_size_in_mm"], $_POST["seed_color"],  
+		$_POST["seed_shape"], $_POST["light_requirements_hours_per_day"],  
+		$_POST["time_to_germination"], $_POST["time_to_germination"],  
+		$_POST["percentage_germination"], $_POST["transplantability"],  
+		$_POST["seed_resources"], $_POST["seeding_instructions"],  
+		$_POST["plant_propagation_method"], $_POST["plant_propagation_tips"]);
+
+
+		$this->AddPlantFunctions( $plantID, $_POST["non_food_use_other"],  
+		$_POST["nonfoodusekey"], $_POST["Non_food_Use"], $_POST["nutrient_fixing"],  
+		$_POST["CN_ratio_dried_plant"], $_POST["CN_ratio_fresh_plant"],  
+		$_POST["biodynamic_accumulator_mulch_plant"], $_POST["lumber_usage"],  
+		$_POST["mushroom_substrate"], $_POST["mushroom_substrate_species"],  
+		$_POST["beauty_products"], $_POST["other_beauty_products"],  
+		$_POST["pollutant_cleaning_capabilities"], $_POST["sap_use"],  
+		$_POST["other_sap_use"]);
+
+
+		$this->AddHabitatandCommunity($plantID, $_POST["plant_functions_in_environment"], 
+		 $_POST["layers_plant_type"], $_POST["other_plant_guilds"],  
+		$_POST["plantguildskey"], $_POST["plant_guilds"],  
+		$_POST["landscape_application"], $_POST["other_landscape_application"], 
+		 $_POST["soil_content_preferences"], $_POST["other_content_preferences"],  
+		$_POST["tolerates_drought"], $_POST["erosion_control_use"],  
+		$_POST["juglone_tolerant"], $_POST["pollution_tolerant"],  
+		$_POST["storm_water_retention"], $_POST["soil_salinity_tolerant"], 
+		 $_POST["sun_tolerance_hrs"], $_POST["altitude_preference_min"], 
+		 $_POST["rooftop_garden"], $_POST["container_plant"],  
+		$_POST["altitude_preference_max"], $_POST["terrarium"],  
+		$_POST["tolerates_flooding"], $_POST["hedge_wind_control"],  
+		$_POST["compact_soil_breaker"], $_POST["coppiceable_poulardable"],  
+		$_POST["native_habitat"], $_POST["nativehabitatkey"], $_POST["indication_of"],
+		$_POST["tolerates_compaction"], $_POST["tolerates_rocky_soil"], 
+		$_POST["tolerates_mowing"]);
+
+		$this->AddDiseases($plantID, $_POST["plant_diseases_other"],  
+		$_POST["plant_diseaseskey"], $_POST["plant_diseaseskey"],  
+		$_POST["disease_treatments_description"], $_POST["disease_treatments_resources"]);
+
+
+		$this->AddMaintenance($plantID, $_POST["fruiting_habit"], 
+		$_POST["other_fruiting_habit"], $_POST["litter_type"],  
+		$_POST["other_litter_type"], $_POST["propagation_control_methods"],  
+		$_POST["other_propagation_control_methods"], $_POST["growth_season"],  
+		$_POST["extra_watering_needed"], $_POST["extra_observation_needed"],  
+		$_POST["vegetable_season"]); 
+
+
+		$this->AddAttractionandrepulsion($plantID, $_POST["Deterrence_characteristics"], 
+		 $_POST["other_deterrence"], $_POST["flowering_time_min"],  
+		$_POST["flowering_time_max"], $_POST["beneficial_insect_laying"],  
+		$_POST["beneficial_insect_nectar_or_food"],  
+		$_POST["beneficial_insect_shelter"], $_POST["predators_scientificname"], 
+		 $_POST["predators_commonname"], $_POST["pests_scientificname"],  
+		$_POST["pests_commonname"]);
+
 
 	$this->AddRegionalCharacteristics( $plantID, $_POST["hardiness_zone_max"],  
 	$_POST["hardiness_zone_min"], $_POST["Sunset_zones"],  
@@ -877,7 +937,6 @@ function LoadSearchPage()  // we may or may not use the $atts variable - it's th
 	$_POST["beneficial_insect_shelter"], $_POST["predators_scientificname"], 
 	 $_POST["predators_commonname"], $_POST["pests_scientificname"],  
 	$_POST["pests_commonname"]);
-
 
 if (isset($_POST['native_habitat'])) {
     $nativehabitat= implode(" ", $_POST['native_habitat']);// converts $_POST interests into a string
@@ -1152,7 +1211,6 @@ Seeds per pound:    ". $_POST["seeds_per_pound"] .
 "<br> Pollutant Cleaning: " . $_POST["pollutant_cleaning_capabilities"] . 
 "<br> Beauty Products:   " . $_POST["beauty_products"] . 
 "<br> Other: " . $_POST["other_beauty_products"] . 
-
 "<br>Habitat: Native Habitat (WWF): "   . $nativehabitat .
 "<br>Preferred Habitat Conditions: 
 <br>Tolerates Drought:   " . $_POST["tolerates_drought"] .
@@ -1220,9 +1278,6 @@ Plant Diseases: " . $plantdiseasesstring .
 "<br> Characteristics of deterrence: ". $deterrencecharacteristics .
 "<br> Other Deterrence: ". $_POST["other_deterrence"] .
 ".";
-
-
-
 
 
 return $output;
@@ -1702,6 +1757,7 @@ $output .= $this->enumDropdown(plant_functions_in_environment_descriptions, plan
  $output .= '<br><br>Plant Layer in Forest Garden:   '. PHP_EOL;
 $output .= $this->enumDropdown(layers_plant_type, layers_plant_type). PHP_EOL;
  $output .= ' Companion Plant HERE I NEED TO FIGURE OUT HOW TO DO A DROPDOWN LIST OF ALL ADDED PLANTS. DO 3 LISTS. AND ADD NON-Companion plants, plants to avoid.'. PHP_EOL;
+
  $output .= '<BR> Plant Guilds:   ' . PHP_EOL;
 $output .= $this->enumDropdown(plant_guilds, plant_guilds). PHP_EOL;
  $output .= '<br>Other Plant Guilds:  <input type="text" name="other_plant_guilds">'. PHP_EOL;
