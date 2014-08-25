@@ -550,6 +550,7 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		'sun_tolerance_hrs' => $sun_tolerance_hrs,
 		'shade_tolerance_hrs' => $shade_tolerance_hrs,
 		'altitude_preference_min' => $altitude_preference_min,
+		'altitude_preference_min' => $altitude_preference_min,
 		'rooftop_garden' => $rooftop_garden,
 		'container_plant' => $container_plant,
 		'altitude_preference_max' => $altitude_preference_max,
@@ -560,7 +561,7 @@ function AddHabitatandCommunity($plantID, $plant_functions_in_environment,
 		'coppiceable_poulardable' => $coppiceable_poulardable,
 		'tolerates_compaction' => $tolerates_compaction,
 		'tolerates_rocky_soil' => $tolerates_rocky_soil,
-		'tolerates_mowing' => $tolerats_mowing),
+		'tolerates_mowing' => $tolerates_mowing,
 		'indication_of' => $indication_of ),
 	array('%s','%s','%s','%s','%s','%s','%d','%d','%d','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s','%s','%s') );
 
@@ -1363,14 +1364,7 @@ $output .= '<br>Language of name: <input type="text" name="alternate_name_langua
 $output .= '<br>Variety: <input type="text" name="variety_name">' . PHP_EOL;
 $output .= '<br> Tips: <textarea cols="30" rows="3" input type="text" name="Tips"></textarea>' . PHP_EOL;
 $output .= '<br>Add Images, all files must be under 1 MB and have image file extensions. ' . PHP_EOL;
-$output .= '<span class="small"><a href="#" id="AddMoreFileBox" class="btn btn-info">Add More Field</a></span></p> ' . PHP_EOL;
-$output .= '<div id="InputsWrapper"> ' . PHP_EOL;
-$output .= '<div><input type="text" name="mytext[]" id="field_1" value="Text 1"/><a href="#" class="removeclass">&times;</a></div> ' . PHP_EOL;
-$output .= '</div> ' . PHP_EOL;
-$output .= '<div class "tester"> ' . PHP_EOL;
-$output .= '<div class "inner"> Hello </div> ' . PHP_EOL;
-$output .= '<div class "inner"> Goodbye </div> ' . PHP_EOL;
-$output .= '</div> ' . PHP_EOL;
+
 
 $output .= 'ADD ZIP CODE LINK' . PHP_EOL;
 $output .= '</div> ' . PHP_EOL;
